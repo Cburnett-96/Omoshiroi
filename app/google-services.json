@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "525810721690",
+    "firebase_url": "https://omoshiroi-f0efb-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "omoshiroi-f0efb",
+    "storage_bucket": "omoshiroi-f0efb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525810721690:android:c44988ec4b17770c82d023",
+        "android_client_info": {
+          "package_name": "com.example.myomoshiroi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525810721690-ejgqugvkk760thr0o7egb0h7veujded3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myomoshiroi",
+            "certificate_hash": "6904207363469960d557a21a6095d53fdd3cb945"
+          }
+        },
+        {
+          "client_id": "525810721690-khtea07v0q4jns4b73gjgssdkl1kvrfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxHrU3Xb1k5zvyxHza7gRzFDbKU5rzpa0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525810721690-khtea07v0q4jns4b73gjgssdkl1kvrfa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

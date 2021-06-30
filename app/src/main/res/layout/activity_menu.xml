@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/custom"
+    tools:context=".MenuActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/Linear_upper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <LinearLayout
+                android:id="@+id/Linear_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/profile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:gravity="end"
+                    app:srcCompat="@drawable/profile" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Level"
+        android:textColorHint="@android:color/darker_gray"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/textPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Points"
+        android:textColorHint="@android:color/darker_gray"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+</LinearLayout>
+</LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded1"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textOcoin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textAllCaps="false"
+                        android:textSize="15sp"
+                        android:hint="Ocoins"
+                        android:layout_gravity="center_vertical"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:backgroundTintMode="multiply"
+                    app:srcCompat="@drawable/ocoins" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/Linear_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/setting"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="end"
+                    android:backgroundTintMode="multiply"
+                    app:srcCompat="@drawable/setting" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <ImageView
+                android:id="@+id/menu"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:background="@drawable/rounded1"
+                app:srcCompat="@drawable/banner_omoshiroi"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:id="@+id/Linear_arcade"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:tint="@android:color/transparent" />
+                <Button
+                    android:id="@+id/btn_arcade"
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    android:background="#00FFFFFF"
+                    android:foreground="@drawable/arcade" />
+            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/Linear_mission"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_mission"
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:background="#00FFFFFF"
+                android:foreground="@drawable/mission" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:tint="@android:color/transparent" />
+
+        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/Linear_tokens"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:tint="@android:color/transparent" />
+                <Button
+                    android:id="@+id/btn_tokens"
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    android:background="#00FFFFFF"
+                    android:foreground="@drawable/tokens" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/Linear_ranking"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_ranking"
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    android:background="#00FFFFFF"
+                    android:foreground="@drawable/ranking" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:tint="@android:color/transparent" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/Linear_history"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:tint="@android:color/transparent" />
+                <Button
+                    android:id="@+id/btn_history"
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    android:background="#00FFFFFF"
+                    android:foreground="@drawable/history" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/Linear_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:tint="@android:color/transparent" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
