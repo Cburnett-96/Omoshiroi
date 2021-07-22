@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/custom"
+    android:background="@drawable/gradient_drawable"
     tools:context=".MenuActivity">
 
     <androidx.core.widget.NestedScrollView
@@ -22,10 +22,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:baselineAligned="false">
             <LinearLayout
                 android:id="@+id/Linear_profile"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
@@ -36,7 +36,8 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:gravity="end"
-                    app:srcCompat="@drawable/profile" />
+                    app:srcCompat="@raw/profile"
+                    android:contentDescription="@string/user_profile" />
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -48,24 +49,26 @@
         android:id="@+id/textLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Level"
+        android:hint="@string/level"
         android:textColorHint="@android:color/darker_gray"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        tools:text="Level: 1"/>
     <TextView
         android:id="@+id/textPoint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Points"
+        android:hint="@string/points"
         android:textColorHint="@android:color/darker_gray"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        tools:text="Points: 0"/>
 
 </LinearLayout>
 </LinearLayout>
@@ -84,16 +87,18 @@
                         android:layout_marginStart="10dp"
                         android:textAllCaps="false"
                         android:textSize="15sp"
-                        android:hint="Ocoins"
+                        android:hint="@string/ocoins"
                         android:layout_gravity="center_vertical"
                         android:textStyle="bold"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black"
+                        tools:text="0"/>
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="end"
                     android:backgroundTintMode="multiply"
-                    app:srcCompat="@drawable/ocoins" />
+                    app:srcCompat="@raw/ocoins"
+                    android:contentDescription="@string/ocoins" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/Linear_setting"
@@ -109,111 +114,100 @@
                     android:layout_height="50dp"
                     android:layout_gravity="end"
                     android:backgroundTintMode="multiply"
-                    app:srcCompat="@drawable/setting" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:orientation="vertical">
-
-                </LinearLayout>
+                    app:srcCompat="@raw/setting"
+                    android:contentDescription="@string/setting" />
             </LinearLayout>
-
         </LinearLayout>
-
+            <Button
+                android:id="@+id/walkThroughButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="20dp"
+                app:backgroundTint="#000000"
+                android:layout_gravity="end"
+                android:background="@drawable/ic_help_outline" />
             <ImageView
                 android:id="@+id/menu"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
-                android:background="@drawable/rounded1"
-                app:srcCompat="@drawable/banner_omoshiroi"
-                android:layout_gravity="center"/>
-
+                app:srcCompat="@raw/banner_omoshiroi"
+                android:layout_gravity="center"
+                android:contentDescription="@string/my_omoshiroi" />
             <LinearLayout
                 android:id="@+id/Linear_arcade"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    app:tint="@android:color/transparent" />
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:background="@raw/arcade">
                 <Button
                     android:id="@+id/btn_arcade"
                     android:layout_width="250dp"
                     android:layout_height="100dp"
                     android:background="#00FFFFFF"
-                    android:foreground="@drawable/arcade" />
+                    android:foreground="@raw/arcade" />
             </LinearLayout>
         <LinearLayout
             android:id="@+id/Linear_mission"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@raw/mission">
             <Button
                 android:id="@+id/btn_mission"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
                 android:background="#00FFFFFF"
-                android:foreground="@drawable/mission" />
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:tint="@android:color/transparent" />
+                android:foreground="@raw/mission" />
 
         </LinearLayout>
             <LinearLayout
                 android:id="@+id/Linear_tokens"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    app:tint="@android:color/transparent" />
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@raw/tokens">
                 <Button
                     android:id="@+id/btn_tokens"
                     android:layout_width="250dp"
                     android:layout_height="100dp"
                     android:background="#00FFFFFF"
-                    android:foreground="@drawable/tokens" />
+                    android:foreground="@raw/tokens" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/Linear_ranking"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_gravity="center"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@raw/ranking">
                 <Button
                     android:id="@+id/btn_ranking"
                     android:layout_width="250dp"
                     android:layout_height="100dp"
                     android:background="#00FFFFFF"
-                    android:foreground="@drawable/ranking" />
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    app:tint="@android:color/transparent" />
+                    android:foreground="@raw/ranking" />
+
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/Linear_history"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="100dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    app:tint="@android:color/transparent" />
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@raw/history">
                 <Button
                     android:id="@+id/btn_history"
                     android:layout_width="250dp"
                     android:layout_height="100dp"
                     android:background="#00FFFFFF"
-                    android:foreground="@drawable/history" />
+                    android:foreground="@raw/history" />
 
             </LinearLayout>
             <LinearLayout
@@ -225,12 +219,50 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    app:tint="@android:color/transparent" />
+                    app:tint="@android:color/transparent"
+                    android:contentDescription="@string/spacing" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:id="@+id/linearBGWalkthought"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@raw/walk1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+            <Button
+                android:id="@+id/skipButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:background="#00FFFFFF"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Skip"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/nextWalkButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="#00FFFFFF"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="@string/next"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textAlignment="viewEnd"
+                android:layout_margin="10dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

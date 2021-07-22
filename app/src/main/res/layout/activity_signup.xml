@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/custom"
+    android:background="@drawable/gradient_drawable"
     tools:context=".SignupActivity">
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -23,27 +24,17 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/rounded1"
-        app:srcCompat="@drawable/banner_omoshiroi" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_gravity="center_horizontal"
-                android:text="Registration"
-                android:textAlignment="center"
-                android:textColor="#004455"
-                android:textSize="22sp" />
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:srcCompat="@raw/register_now"
+        android:contentDescription="@string/my_omoshiroi" />
 
         <LinearLayout
             android:id="@+id/Linear_UserData"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="vertical">
             <com.google.android.material.textfield.TextInputLayout
@@ -56,11 +47,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:hint="Full Name"
+                    android:hint="@string/full_name"
                     android:textSize="16sp"
-                    android:background="@drawable/rectangle"
+                    android:background="@raw/rectangle"
                     android:textColor="@color/white"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:autofillHints="Full Name" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,11 +66,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:hint="LRN"
+                    android:hint="@string/lrn"
                     android:textSize="16sp"
-                    android:background="@drawable/rectangle"
+                    android:background="@raw/rectangle"
                     android:textColor="@color/white"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:autofillHints="LRN" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,11 +85,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     android:textSize="16sp"
-                    android:background="@drawable/rectangle"
+                    android:background="@raw/rectangle"
                     android:textColor="@color/white"
-                    android:inputType="textWebEmailAddress" />
+                    android:inputType="textWebEmailAddress"
+                    android:autofillHints="Email" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,11 +105,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:textSize="16sp"
-                    android:background="@drawable/rectangle"
+                    android:background="@raw/rectangle"
                     android:textColor="@color/white"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:autofillHints="Password" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -129,26 +124,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:hint="Confirm Password"
+                    android:hint="@string/confirm_password"
                     android:textSize="16sp"
-                    android:background="@drawable/rectangle"
+                    android:background="@raw/rectangle"
                     android:textColor="@color/white"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:autofillHints="Confirm Password" />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/rectangle"
+                android:background="@raw/rectangle"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="20dp"
-                    android:text="Sex"
+                    android:text="@string/sex"
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:gravity="center_vertical"
@@ -160,7 +155,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
                     android:textColor="@android:color/white"
-                    android:text="Male" />
+                    android:text="@string/male" />
 
                 <RadioButton
                     android:id="@+id/radioFemale"
@@ -168,20 +163,23 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
                     android:textColor="@android:color/white"
-                    android:text="Female" />
+                    android:text="@string/female" />
             </RadioGroup>
         </LinearLayout>
 
             <Button
                 android:id="@+id/button_register"
-                android:layout_width="fill_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:layout_gravity="center"
                 android:background="@drawable/rounded_btn"
-                android:text="Register"
+                android:text="@string/register"
                 android:textAllCaps="false"
                 android:textColor="#fff"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_signup" />
 
     <TextView
         android:id="@+id/text_view_login"
@@ -196,16 +194,32 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            app:tint="@android:color/transparent" />
-
+            app:tint="@android:color/transparent"
+            android:contentDescription="@string/spacing" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/register_Progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
+    <LinearLayout
+        android:id="@+id/linearLoadingProgress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
         android:visibility="gone"
-        android:layout_gravity="center"/>
+        android:gravity="center_horizontal">
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/register_Progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:text="@string/loading"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

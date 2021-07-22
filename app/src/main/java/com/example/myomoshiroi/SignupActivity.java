@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -32,11 +35,12 @@ public class SignupActivity extends AppCompatActivity {
     private RadioButton radioMale, radioFemale;
     private Button button_register;
     private TextView text_view_login;
-    com.google.android.material.progressindicator.CircularProgressIndicator registerProgress;
+    LinearLayout linearProgress;
 
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseAuth mAuth;
+    SharedPreferences prefs;
 
     String fullname, lrn, email, password, co_password;
     int level, point, coin;
@@ -51,7 +55,7 @@ public class SignupActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_signup);
         //        get all view id from XML
-        registerProgress= findViewById(R.id.register_Progress);
+        linearProgress= findViewById(R.id.linearLoadingProgress);
         edit_txt_Fullname = findViewById(R.id.edit_txt_Fullname);
         edit_txt_LRN = findViewById(R.id.edit_txt_LRN);
         edit_txt_Email = findViewById(R.id.edit_txt_Email);
@@ -65,11 +69,13 @@ public class SignupActivity extends AppCompatActivity {
         level = 1;
         point = 0;
         coin = 0;
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
         //        Get Firebase auth instance
         mAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("UserData");
-//        Login Firebase auth instance
+        //        Login Firebase auth instance
         text_view_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +97,7 @@ public class SignupActivity extends AppCompatActivity {
                 if (password.equals(co_password)) {
 
                     //    progressbar VISIBLE
-                    registerProgress.setVisibility(View.VISIBLE);
+                    linearProgress.setVisibility(View.VISIBLE);
                     mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener
                             (new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -106,10 +112,13 @@ public class SignupActivity extends AppCompatActivity {
                                                 addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
+                                                        SharedPreferences.Editor editor = prefs.edit();
+                                                        editor.putString("music setting","on");
+                                                        editor.putString("sound setting","on");
+                                                        editor.apply();
 
                                                         //    progressbar GONE
-                                                        registerProgress.setVisibility(View.GONE);
-
+                                                        linearProgress.setVisibility(View.GONE);
                                                         Toast.makeText(SignupActivity.this, "Successful Registered", Toast.LENGTH_SHORT).show();
                                                         Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                                                         startActivity(intent);
@@ -118,8 +127,8 @@ public class SignupActivity extends AppCompatActivity {
                                                 });
                                     } else {
                                         //    progressbar GONE
-                                        registerProgress.setVisibility(View.GONE);
-                                        Toast.makeText(SignupActivity.this, "Connection Error", Toast.LENGTH_SHORT).show();
+                                        linearProgress.setVisibility(View.GONE);
+                                        Toast.makeText(SignupActivity.this, "Connection Error or Email Already Used", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -164,7 +173,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private boolean validatePassword() {
         password = edit_txt_Pass.getText().toString().trim();
-        co_password = edit_txt_CoPass.getText().toString().toLowerCase();
+        co_password = edit_txt_CoPass.getText().toString().trim();
 
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(SignupActivity.this, "Enter Your Password", Toast.LENGTH_SHORT).show();
@@ -194,18 +203,6 @@ public class SignupActivity extends AppCompatActivity {
         } else {
             Toast.makeText(SignupActivity.this, "Select Your Gender", Toast.LENGTH_SHORT).show();
             return true;
-        }
-    }
-
-
-    //    if the user already logged in then it will automatically send on Dashboard/MainActivity activity.
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
         }
     }
 }
