@@ -4,53 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_drawable"
+    android:background="@drawable/switchbackground"
     tools:context=".ShopActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/Linear_upper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="start"
+                android:background="@drawable/ic_back"
+                app:backgroundTint="#004455" />
+            <ImageView
+                android:id="@+id/imageShop"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:paddingStart="50dp"
+                android:paddingEnd="0dp"
+                app:srcCompat="@raw/shop_powerups" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textOcoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:hint="@string/ocoins"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/bauhaus_regular"
+                    tools:text="0" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:backgroundTintMode="multiply"
+                    android:contentDescription="@string/ocoins"
+                    app:srcCompat="@raw/ocoins" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/rounded"
+            android:background="@drawable/layout_bg"
             android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/backButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="start"
-                    android:background="@drawable/ic_back"
-                    app:backgroundTint="#000000" />
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:paddingStart="0dp"
-                    android:paddingEnd="30dp"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@raw/shop_powerups" />
-            </LinearLayout>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                android:layout_height="5dp"
-                android:background="#E91E63"/>
+            <include layout="@layout/content_shop" />
+            <include layout="@layout/content_shop_power_ups" />
+            <include layout="@layout/content_shop_avatars" />
         </LinearLayout>
     </LinearLayout>
 

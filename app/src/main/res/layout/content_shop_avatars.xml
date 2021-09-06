@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutAvatars"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/switchbackground"
+        android:layout_gravity="center"
+        android:elevation="5dp"
+        android:stateListAnimator="@null"
+        android:translationZ="2dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_changeAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/bauhaus_regular"
+            android:background="@drawable/rounded1"
+            android:text="Change Avatar"
+            android:textColor="@color/white_smoke"
+            android:textSize="12sp"
+            app:backgroundTint="@color/forest_green"/>
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:elevation="5dp"
+                    android:stateListAnimator="@null"
+                    android:translationZ="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Andry"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageAndry"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_android" />
+
+                    <Button
+                        android:id="@+id/btn_buyAndry"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="5000"
+                        android:textColor="@color/white_smoke"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:elevation="5dp"
+                    android:stateListAnimator="@null"
+                    android:translationZ="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Bulby"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageBulby"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_bulb" />
+
+                    <Button
+                        android:id="@+id/btn_buyBulby"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="5200"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Cackytus"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageCackytus"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_cactus" />
+
+                    <Button
+                        android:id="@+id/btn_buyCackytus"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="5000"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Chicky"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageChicky"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_chick" />
+
+                    <Button
+                        android:id="@+id/btn_buyChicky"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="5100"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Clibot"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageClibot"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_cliprobot" />
+
+                    <Button
+                        android:id="@+id/btn_buyClibot"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="5000"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Cupies"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageCupies"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_cup" />
+
+                    <Button
+                        android:id="@+id/btn_buyCupies"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="7500"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Hatty"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageHatty"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_hat" />
+
+                    <Button
+                        android:id="@+id/btn_buyHatty"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="7500"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Headyglass"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageHeadyglass"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_head" />
+
+                    <Button
+                        android:id="@+id/btn_buyHeadyglass"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="6200"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Monisad"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageMonisad"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_monitor" />
+
+                    <Button
+                        android:id="@+id/btn_buyMonisad"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="5100"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Pineglass"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imagePineglass"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_pinaple" />
+
+                    <Button
+                        android:id="@+id/btn_buyPineglass"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="5200"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Jobot"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageJobot"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_robot" />
+
+                    <Button
+                        android:id="@+id/btn_buyJobot"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="5000"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/switchbackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="Skullyhead"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageSkullyhead"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/user_profile"
+                        app:srcCompat="@raw/avatar_skull" />
+
+                    <Button
+                        android:id="@+id/btn_buySkullyhead"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded1"
+                        android:text="6400"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/forest_green"
+                        app:icon="@raw/ocoins"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout_daily"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="130dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:background="@drawable/switchbackground"
+            android:elevation="5dp"
+            android:stateListAnimator="@null"
+            android:translationZ="2dp">
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="103dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@raw/daily_reward">
+
+                <Button
+                    android:id="@+id/dailyRewardButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00FFFFFF"
+                    tools:text="Reward" />
+            </LinearLayout>
+        </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="#E91E63" />
+
+            <LinearLayout
+                android:id="@+id/layout_task01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/switchbackground"
+                android:orientation="horizontal"
+                android:elevation="5dp"
+                android:stateListAnimator="@null"
+                android:translationZ="2dp">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/ic_game"
+                    app:backgroundTint="@color/forest_green"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Daily Task: #1"
+                            android:textSize="20sp"
+                            android:textColor="#E91E63"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/task01_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:hint="0/5"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textColor="@color/forest_green"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Play Easy Mode 5 times, get 250 Ocoins"
+                        android:textColor="#E91E63"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:layout_gravity="start"
+                            android:backgroundTintMode="multiply"
+                            android:contentDescription="@string/ocoins"
+                            app:srcCompat="@raw/ocoins" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="250"
+                            android:textColor="#E91E63"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_task01"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/rounded1"
+                    android:text="GO"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/bauhaus_regular"
+                    app:backgroundTint="@color/forest_green" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

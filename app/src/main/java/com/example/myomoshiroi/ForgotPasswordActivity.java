@@ -18,12 +18,19 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
     private EditText edit_txt_resetEmail;
-    private Button button_resetPassword;
+    Button button_resetPassword;
     private ProgressBar resetPassword_progress;
     FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference, uidRef;
 
     String ResetPassword;
 
@@ -50,22 +57,41 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 }
                 resetPassword_progress.setVisibility(View.VISIBLE);
 
-                firebaseAuth.sendPasswordResetEmail(edit_txt_resetEmail.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                resetPassword_progress.setVisibility(View.GONE);
-                                    if (task.isSuccessful()) {
+                databaseReference = FirebaseDatabase.getInstance().getReference();
+                uidRef = databaseReference.child("UserData");
+                Query query = uidRef.orderByChild("EmailId").equalTo(ResetPassword);
+                ValueEventListener eventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            firebaseAuth.sendPasswordResetEmail(edit_txt_resetEmail.getText().toString())
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                resetPassword_progress.setVisibility(View.GONE);
+                                                Toast.makeText(ForgotPasswordActivity.this, "You will receive an email with a link to reset your password.", Toast.LENGTH_LONG).show();
+                                                Intent intent = new Intent(ForgotPasswordActivity.this, MainActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                resetPassword_progress.setVisibility(View.GONE);
+                                                Toast.makeText(ForgotPasswordActivity.this, "Something Wrong!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }else {
+                            resetPassword_progress.setVisibility(View.GONE);
+                            Toast.makeText(ForgotPasswordActivity.this, "We couldn't find your email address in the Omoshiroi registered user database!", Toast.LENGTH_LONG).show();
+                        }
+                    }
 
-                                        Toast.makeText(ForgotPasswordActivity.this, "Password reset link sent to your Email", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(ForgotPasswordActivity.this, MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(ForgotPasswordActivity.this, "No Internet Connection!", Toast.LENGTH_SHORT).show();
-                                    }
-                            }
-                        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                };
+                query.addListenerForSingleValueEvent(eventListener);
             }
         });
     }

@@ -4,93 +4,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_drawable"
+    android:background="@drawable/switchbackground"
     tools:context=".EasyTopicActivity">
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="start"
+            android:background="@drawable/ic_back"
+            app:backgroundTint="#004455" />
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="0dp"
+            android:paddingEnd="40dp"
+            android:text="@string/easy"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/playtime"
+            android:textColor="@color/forest_green"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layout_bg"
+        android:orientation="vertical">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/Linear_upper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/rounded"
             android:orientation="vertical">
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/backButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_gravity="start"
-                    android:background="@drawable/ic_back"
-                    app:backgroundTint="#000000" />
-                <TextView
-                    android:id="@+id/titleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingStart="0dp"
-                    android:paddingEnd="40dp"
-                    android:text="@string/easy"
-                    android:textAlignment="center"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <TextView
-                android:id="@+id/titleTextCountQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                tools:text="1/5"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                android:layout_height="5dp"
-                android:background="#E91E63"/>
-            <LinearLayout
+                android:id="@+id/linearQuestionAnswer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
+                <TextView
+                    android:id="@+id/titleTextCountQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/bauhaus_regular"
+                    tools:text="1/5"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true">
             <LinearLayout
                 android:id="@+id/linearBackgroundQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
+                android:layout_alignParentBottom="true"
                 android:background="@drawable/easybg"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/textViewQuestion"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="5dp"
-                    android:textAlignment="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
                     android:gravity="center"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     tools:text="RANDOM QUESTIONS GENERATE HERE." />
+                <Button
+                    android:id="@+id/buttonSpeak"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:backgroundTint="@color/white_smoke"
+                    android:background="@drawable/sound_on"/>
             </LinearLayout>
+                    <ProgressBar
+                        android:id="@+id/progressBarCircle"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/circle_dark_blue"
+                        android:indeterminate="false"
+                        android:progressDrawable="@drawable/circle_yellow"
+                        android:rotation="90" />
+                    <TextView
+                        android:id="@+id/text_view_countdown"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:alpha="0.6"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/lato_regular"
+                        tools:text="00:00"/>
+                </RelativeLayout>
                 <RadioGroup
                     android:id="@+id/radioGroupAnswer"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3"
-                    android:orientation="vertical"
-                    android:checkedButton="@id/radioButtonAnswer1">
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/radioButtonAnswer1"
@@ -104,6 +150,7 @@
                         android:background="@drawable/radio_selector"
                         android:textColor="@drawable/text_color"
                         android:textAlignment="center"
+                        android:fontFamily="@font/lato_regular"
                         android:elevation="4dp"
                         android:padding="5dp"
                         tools:text="Answer 1" />
@@ -119,6 +166,7 @@
                         android:background="@drawable/radio_selector"
                         android:textColor="@drawable/text_color"
                         android:textAlignment="center"
+                        android:fontFamily="@font/lato_regular"
                         android:elevation="4dp"
                         android:padding="5dp"
                         tools:text="Answer 2" />
@@ -127,6 +175,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="30dp"
                         android:layout_gravity="center"
@@ -134,28 +183,42 @@
                         android:background="@drawable/radio_selector"
                         android:textColor="@drawable/text_color"
                         android:textAlignment="center"
+                        android:fontFamily="@font/lato_regular"
                         android:elevation="4dp"
                         android:padding="5dp"
                         tools:text="Answer 3" />
                 </RadioGroup>
             </LinearLayout>
-
-            <Button
-                android:id="@+id/nextButton"
-                android:layout_width="130dp"
-                android:layout_height="50dp"
-                android:layout_gravity="end"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/switchbackground"
-                android:backgroundTint="@null"
-                android:text="@string/next"
-                android:textColor="@color/white"
-                app:icon="@drawable/ic_next"
-                app:iconTint="#FFFFFF" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_powerUps"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded2"
+                    app:backgroundTint="#00B0F0"
+                    android:foreground="@raw/power_ups"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/nextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/switchbackground"
+                    app:backgroundTint="#00B0F0"
+                    android:text="@string/next"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/linearLoadingProgress"
         android:layout_width="match_parent"

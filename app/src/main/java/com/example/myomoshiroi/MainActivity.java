@@ -21,22 +21,28 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.provider.Settings;
 
+import com.example.myomoshiroi.other.SoundPoolManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button enterBtn;
+    Button enterBtn;
     private EditText txtemail, txtpassword;
-    private TextView text_view_signup, forgot_password;
+    TextView text_view_signup, forgot_password;
     LinearLayout linearProgress;
+    private DatabaseReference databaseReference, uidRef;
     FirebaseAuth mAuth;
 
     SharedPreferences prefs;
@@ -74,30 +80,47 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //    progressbar VISIBLE
                 linearProgress.setVisibility(View.VISIBLE);
-                mAuth.signInWithEmailAndPassword(loginemail, loginpassword).
-                        addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                //    progressbar GONE
-                                linearProgress.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    SharedPreferences.Editor editor = prefs.edit();
-                                    editor.putString("music setting","on");
-                                    editor.putString("sound setting","on");
-                                    editor.putString("walkthrough","on");
-                                    editor.apply();
-                                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                databaseReference = FirebaseDatabase.getInstance().getReference();
+                uidRef = databaseReference.child("UserData");
+                Query query = uidRef.orderByChild("EmailId").equalTo(loginemail);
+                ValueEventListener eventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            mAuth.signInWithEmailAndPassword(loginemail, loginpassword).
+                                    addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                //    progressbar GONE
+                                                linearProgress.setVisibility(View.GONE);
+                                                SharedPreferences.Editor editor = prefs.edit();
+                                                editor.putString("avatarName", "profile");
+                                                editor.putString("music setting", "on");
+                                                editor.putString("sound setting", "on");
+                                                editor.putString("walkthrough", "on");
+                                                editor.apply();
+                                                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                //    progressbar GONE
+                                                linearProgress.setVisibility(View.GONE);
+                                                Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        } else {
+                            linearProgress.setVisibility(View.GONE);
+                            Toast.makeText(MainActivity.this, "Wrong Email Address", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-                                } else {
-                                    //    progressbar GONE
-                                    linearProgress.setVisibility(View.GONE);
-                                    Toast.makeText(MainActivity.this, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                };
+                query.addListenerForSingleValueEvent(eventListener);
             }
         });
         //        handle forgot button
@@ -143,31 +166,32 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     }
+
     @Override
     protected void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser() != null) {
             SharedPreferences.Editor editor = prefs.edit();
-            music = prefs.getString("music setting",null);
-            sound = prefs.getString("sound setting",null);
+            music = prefs.getString("music setting", null);
+            sound = prefs.getString("sound setting", null);
             //walk = prefs.getString("walkthrough",null);
-            if (music.equals("off")){
-                editor.putString("music setting","off");
-            }else{
-                editor.putString("music setting","on");
+            if (music.equals("off")) {
+                editor.putString("music setting", "off");
+            } else {
+                editor.putString("music setting", "on");
             }
-            if (sound.equals("off")){
-                editor.putString("sound setting","off");
-            }else{
-                editor.putString("sound setting","on");
+            if (sound.equals("off")) {
+                editor.putString("sound setting", "off");
+            } else {
+                editor.putString("sound setting", "on");
             }
             editor.apply();
             CheckInternetConnection();
         }
     }
-    private void FirstBootCheckInternetConnection(){
-        if(!isNetworkAvailable())
-        {
+
+    private void FirstBootCheckInternetConnection() {
+        if (!isNetworkAvailable()) {
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setTitle("OMOSHIROI Need Internet Connection Access")
@@ -190,9 +214,9 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         }
     }
-    private void CheckInternetConnection(){
-        if(!isNetworkAvailable())
-        {
+
+    private void CheckInternetConnection() {
+        if (!isNetworkAvailable()) {
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setTitle("OMOSHIROI Need Internet Connection Access")
@@ -213,17 +237,18 @@ public class MainActivity extends AppCompatActivity {
                         }
                     })
                     .show();
-        }else{
+        } else {
             Intent i = new Intent(MainActivity.this, MenuActivity.class);
             startActivity(i);
             finish();
         }
 
     }
+
     public boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
-            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
                 if (capabilities != null) {
                     if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {

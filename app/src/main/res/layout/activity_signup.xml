@@ -4,31 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_drawable"
+    android:background="@drawable/layout_bg"
     tools:context=".SignupActivity">
     <androidx.core.widget.NestedScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/rounded"
-            android:padding="16sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        app:srcCompat="@raw/register_now"
-        android:contentDescription="@string/my_omoshiroi" />
+            <TextView
+                android:id="@+id/text_view_forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/playtime"
+                android:text="Register Now"
+                android:textStyle="bold"
+                android:textColor="#004455"
+                android:textSize="28sp" />
 
         <LinearLayout
             android:id="@+id/Linear_UserData"
@@ -38,148 +37,197 @@
             android:gravity="center"
             android:orientation="vertical">
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColorHint="@color/white">
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColorHint="#004455"
+                app:endIconMode="clear_text"
+                app:endIconTint="#004455"
+                app:startIconDrawable="@drawable/ic_person"
+                app:startIconTint="#004455"
+                app:hintTextColor="#004455"
+                app:boxStrokeColor="#004455">
 
                 <EditText
                     android:id="@+id/edit_txt_Fullname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:hint="@string/full_name"
-                    android:textSize="16sp"
-                    android:background="@raw/rectangle"
-                    android:textColor="@color/white"
-                    android:inputType="textPersonName"
-                    android:autofillHints="Full Name" />
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/black"
+                    android:inputType="textPersonName"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColorHint="@color/white">
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColorHint="#004455"
+                app:endIconMode="clear_text"
+                app:endIconTint="#004455"
+                app:startIconDrawable="@drawable/ic_number"
+                app:startIconTint="#004455"
+                app:hintTextColor="#004455"
+                app:boxStrokeColor="#004455">
 
                 <EditText
                     android:id="@+id/edit_txt_LRN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:hint="@string/lrn"
-                    android:textSize="16sp"
-                    android:background="@raw/rectangle"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_medium"
                     android:inputType="number"
                     android:autofillHints="LRN" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_txt_EmailHint"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColorHint="@color/white">
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColorHint="#004455"
+                app:helperTextTextColor="@color/red"
+                app:endIconMode="clear_text"
+                app:endIconTint="#004455"
+                app:startIconDrawable="@drawable/ic_email"
+                app:startIconTint="#004455"
+                app:hintTextColor="#004455"
+                app:boxStrokeColor="#004455">
 
                 <EditText
                     android:id="@+id/edit_txt_Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:hint="@string/email"
-                    android:textSize="16sp"
-                    android:background="@raw/rectangle"
-                    android:textColor="@color/white"
-                    android:inputType="textWebEmailAddress"
-                    android:autofillHints="Email" />
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/black"
+                    android:inputType="textWebEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_text_PasswordHint"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColorHint="#004455"
+                app:helperText="*Password must be at least 8 characters"
+                app:helperTextTextColor="@color/red"
                 app:passwordToggleEnabled="true"
-                android:textColorHint="@color/white">
+                app:startIconDrawable="@drawable/ic_lock"
+                app:startIconTint="#004455"
+                app:hintTextColor="#004455"
+                app:boxStrokeColor="#004455"
+                app:passwordToggleTint="#004455">
 
                 <EditText
                     android:id="@+id/edit_txt_Pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:hint="@string/password"
-                    android:textSize="16sp"
-                    android:background="@raw/rectangle"
-                    android:textColor="@color/white"
-                    android:inputType="textPassword"
-                    android:autofillHints="Password" />
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/black"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_text_CoPasswordHint"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColorHint="#004455"
+                app:helperTextTextColor="@color/red"
                 app:passwordToggleEnabled="true"
-                android:textColorHint="@color/white">
+                app:startIconDrawable="@drawable/ic_lock"
+                app:startIconTint="#004455"
+                app:hintTextColor="#004455"
+                app:boxStrokeColor="#004455"
+                app:passwordToggleTint="#004455">
 
                 <EditText
                     android:id="@+id/edit_txt_CoPass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:hint="@string/confirm_password"
-                    android:textSize="16sp"
-                    android:background="@raw/rectangle"
-                    android:textColor="@color/white"
-                    android:inputType="textPassword"
-                    android:autofillHints="Confirm Password" />
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/black"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
-                android:background="@raw/rectangle"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:text="@string/sex"
-                    android:textColor="@android:color/white"
+                    android:textColor="#004455"
                     android:textSize="16sp"
-                    android:gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="center"
                     android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/radioMale"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:textColor="@android:color/white"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:button="@null"
+                    android:background="@drawable/radio_selector"
+                    android:textColor="@drawable/text_color"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/roboto_medium"
+                    android:elevation="4dp"
+                    android:padding="5dp"
                     android:text="@string/male" />
 
                 <RadioButton
                     android:id="@+id/radioFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:textColor="@android:color/white"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:button="@null"
+                    android:background="@drawable/radio_selector"
+                    android:textColor="@drawable/text_color"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/roboto_medium"
+                    android:elevation="4dp"
+                    android:padding="5dp"
                     android:text="@string/female" />
             </RadioGroup>
         </LinearLayout>
 
             <Button
                 android:id="@+id/button_register"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:layout_gravity="center"
+                android:layout_margin="16dp"
                 android:background="@drawable/rounded_btn"
                 android:text="@string/register"
                 android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="18sp"
-                app:backgroundTint="@null"
-                app:icon="@drawable/ic_signup" />
+                android:textColor="@color/white_smoke"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/bauhaus_regular"
+                app:backgroundTint="#004455"/>
 
     <TextView
         android:id="@+id/text_view_login"
@@ -189,7 +237,8 @@
         android:text="@string/LoginHere"
         android:textAlignment="center"
         android:textColor="#004455"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -205,21 +254,37 @@
         android:layout_height="match_parent"
         android:background="#80000000"
         android:visibility="gone"
-        android:gravity="center_horizontal">
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/register_Progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:layout_gravity="center"/>
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/register_Progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/loading"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_margin="5dp"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:text="@string/loading"
-            android:textSize="25sp"
+            android:text="Check your internet connection if you're stuck here."
+            android:textSize="15sp"
             android:textStyle="bold"/>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

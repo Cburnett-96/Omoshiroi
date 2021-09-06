@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:cardCornerRadius="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/layout_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewPowerUpName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                tools:hint="Power Ups Name"
+                android:textAlignment="center"
+                android:textColor="#004455"
+                android:fontFamily="@font/bauhaus_regular"
+                android:textStyle="bold"
+                android:textSize="23sp" />
+
+            <ImageView
+                android:id="@+id/imageViewPowerUps"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:srcCompat="@raw/power_ups" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/switchbackground"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="10dp"
+                        android:text="Ocoins Price:"
+                        android:textColor="#004455"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewEnd"
+                        android:textAllCaps="false"
+                        android:textColor="@color/forest_green"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/bauhaus_regular"
+                        tools:hint="ocoins" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="10dp"
+                        android:text="Description:"
+                        android:textColor="#004455"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewDescriptionPowerUps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="0dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/forest_green"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/bauhaus_regular"
+                        tools:hint="description" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buyButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/switchbackground"
+                android:text="Buy"
+                android:textAllCaps="false"
+                android:textColor="@color/white_smoke"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/bauhaus_regular"
+                app:backgroundTint="#004455" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

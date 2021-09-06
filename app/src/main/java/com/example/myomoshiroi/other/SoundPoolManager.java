@@ -1,11 +1,12 @@
-package com.example.myomoshiroi;
+package com.example.myomoshiroi.other;
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.util.Log;
-import android.view.View;
+
+import com.example.myomoshiroi.R;
 
 public class SoundPoolManager {
     private static final String TAG = SoundPoolManager.class.getSimpleName();

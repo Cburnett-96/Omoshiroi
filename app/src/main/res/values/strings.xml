@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">My Omoshiroi</string>
-    <string name="LoginHere">Already have an account? <u><b>Login Here</b></u></string>
+    <string name="LoginHere">Already have an account? <u><b>Log in Here</b></u></string>
     <string name="SignUp">New to OMOSHIROI? <u><b>Register Here</b></u></string>
     <string name="forgot_password"><u><b>Forgot Password</b></u></string>
     <string name="pop_up_settings">Settings</string>
     <string name="my_omoshiroi">My OMOSHIROI</string>
-    <string name="email">Email</string>
+    <string name="email">Email Address</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="full_name">Full Name</string>
-    <string name="lrn">LRN</string>
+    <string name="full_name">Name</string>
+    <string name="lrn">LRN/Student #</string>
     <string name="sex">Sex</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
@@ -20,14 +20,14 @@
     <string name="send">Send</string>
     <string name="user_profile">User Profile</string>
     <string name="level">Level:</string>
-    <string name="points">Points:</string>
+    <string name="points">XP:</string>
     <string name="ocoins">Ocoins:</string>
     <string name="setting">Setting</string>
     <string name="exit_game">Exit Game</string>
     <string name="help_faq">Help/FAQ</string>
     <string name="feedback">Feedback</string>
-    <string name="sound">Sound</string>
-    <string name="music">Music</string>
+    <string name="sound">Sound Effect</string>
+    <string name="music">Background Music</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
     <string name="literature">Literature</string>
@@ -38,4 +38,7 @@
     <string name="hard">Hard</string>
     <string name="medium">Medium</string>
     <string name="easy">Easy</string>
+    <string name="about">About</string>
+    <string name="change_password">Change Password</string>
+    <string name="save">Save</string>
 </resources>

@@ -4,44 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_drawable"
+    android:background="@drawable/layout_bg"
     tools:context=".ResultActivity">
     <androidx.core.widget.NestedScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
         <LinearLayout
             android:id="@+id/Linear_upper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/rounded"
+            android:layout_margin="10dp"
             android:orientation="vertical">
-            <TextView
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Result"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@raw/result" />
             <View
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:layout_height="5dp"
                 android:background="#E91E63"/>
-            <TextView
-                android:id="@+id/GreetingsText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                tools:text="Greeting Here"/>
+            <ImageView
+                android:id="@+id/imageViewGreetings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,6 +44,8 @@
                 android:layout_height="wrap_content"
                 android:text="Correct"
                 android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:fontFamily="@font/bauhaus_regular"
                 android:textSize="25sp"/>
             <TextView
                 android:id="@+id/textValueCorrect"
@@ -61,6 +53,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:layout_marginStart="50dp"
+                android:textColor="@color/forest_green"
+                android:fontFamily="@font/bauhaus_regular"
                 android:textSize="25sp"
                 tools:text="0"/>
         </LinearLayout>
@@ -76,6 +70,8 @@
                     android:layout_height="wrap_content"
                     android:text="Incorrect"
                     android:textStyle="bold"
+                    android:textColor="@color/dark_red"
+                    android:fontFamily="@font/bauhaus_regular"
                     android:textSize="25sp"/>
                 <TextView
                     android:id="@+id/textValueInCorrect"
@@ -84,6 +80,8 @@
                     android:gravity="end"
                     android:layout_marginStart="50dp"
                     android:textSize="25sp"
+                    android:textColor="@color/forest_green"
+                    android:fontFamily="@font/bauhaus_regular"
                     tools:text="0"/>
             </LinearLayout>
             <LinearLayout
@@ -96,8 +94,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Points Earned"
+                    android:text="XP Earned"
                     android:textStyle="bold"
+                    android:textColor="@color/purple"
+                    android:fontFamily="@font/bauhaus_regular"
                     android:textSize="25sp"/>
                 <TextView
                     android:id="@+id/textValuePointEarn"
@@ -106,6 +106,8 @@
                     android:gravity="end"
                     android:layout_marginStart="50dp"
                     android:textSize="25sp"
+                    android:textColor="@color/forest_green"
+                    android:fontFamily="@font/bauhaus_regular"
                     tools:text="0"/>
             </LinearLayout>
             <LinearLayout
@@ -120,6 +122,8 @@
                     android:layout_height="wrap_content"
                     android:text="Ocoins Earned"
                     android:textStyle="bold"
+                    android:textColor="@color/purple"
+                    android:fontFamily="@font/bauhaus_regular"
                     android:textSize="25sp"/>
                 <TextView
                     android:id="@+id/textValueOcoinEarn"
@@ -128,6 +132,8 @@
                     android:gravity="end"
                     android:layout_marginStart="50dp"
                     android:textSize="25sp"
+                    android:textColor="@color/forest_green"
+                    android:fontFamily="@font/bauhaus_regular"
                     tools:text="0"/>
             </LinearLayout>
         <LinearLayout
@@ -142,17 +148,26 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded1"
                 android:text="@string/play_again"
-                app:backgroundTint="@null"/>
+                android:textColor="@color/white_smoke"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/bauhaus_regular"
+                app:backgroundTint="#004455"
+                app:icon="@drawable/ic_replay"
+                app:iconTint="@color/white_smoke"/>
             <Button
                 android:id="@+id/closeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
-                android:background="@drawable/rounded_btn"
                 android:text="@string/close"
+                android:background="#00FFFFFF"
                 app:backgroundTint="@null"
-                android:textSize="12sp"
-                app:icon="@drawable/ic_exit" />
+                android:textSize="15sp"
+                android:textColor="@color/red"
+                android:fontFamily="@font/bauhaus_regular"
+                app:icon="@drawable/ic_exit"
+                app:iconTint="@color/red"/>
         </LinearLayout>
 
         </LinearLayout>

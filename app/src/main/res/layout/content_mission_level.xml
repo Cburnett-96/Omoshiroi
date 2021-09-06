@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout_level"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_level_task01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/switchbackground"
+                android:orientation="horizontal"
+                android:elevation="5dp"
+                android:stateListAnimator="@null"
+                android:translationZ="2dp">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/ic_game"
+                    app:backgroundTint="@color/forest_green" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Level Task: #1"
+                            android:textColor="#E91E63"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/level_task01_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:hint="0/10"
+                            android:textColor="@color/forest_green"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Play Easy Mode 10 times, get 500 Ocoins"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:layout_gravity="start"
+                            android:backgroundTintMode="multiply"
+                            android:contentDescription="@string/ocoins"
+                            app:srcCompat="@raw/ocoins" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="500"
+                            android:textColor="#E91E63"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_level_task01"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/rounded1"
+                    android:text="GO"
+                    android:textColor="@color/white_smoke"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/forest_green" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_level_task02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/switchbackground"
+                android:orientation="horizontal"
+                android:elevation="5dp"
+                android:stateListAnimator="@null"
+                android:translationZ="2dp">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/ic_replay"
+                    app:backgroundTint="@color/forest_green" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:text="Level Task: #2"
+                            android:textColor="#E91E63"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Complete one more walk-through, get 50 Ocoins"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:layout_gravity="start"
+                            android:backgroundTintMode="multiply"
+                            android:contentDescription="@string/ocoins"
+                            app:srcCompat="@raw/ocoins" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="50"
+                            android:textColor="#E91E63"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_level_task02"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/rounded1"
+                    android:text="GO"
+                    android:textColor="@color/white_smoke"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/forest_green" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_level_task03"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/switchbackground"
+                android:orientation="horizontal"
+                android:elevation="5dp"
+                android:stateListAnimator="@null"
+                android:translationZ="2dp">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/ic_store"
+                    app:backgroundTint="@color/forest_green" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Level Task: #3"
+                            android:textColor="#E91E63"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Purchase one any power-ups, get 100 Ocoins"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:layout_gravity="start"
+                            android:backgroundTintMode="multiply"
+                            android:contentDescription="@string/ocoins"
+                            app:srcCompat="@raw/ocoins" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="100"
+                            android:textColor="#E91E63"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_level_task03"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/rounded1"
+                    android:text="GO"
+                    android:textColor="@color/white_smoke"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/forest_green" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_level_task04"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/switchbackground"
+                android:orientation="horizontal"
+                android:elevation="5dp"
+                android:stateListAnimator="@null"
+                android:translationZ="2dp">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/ic_game"
+                    app:backgroundTint="@color/forest_green"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Level Task: #4"
+                            android:textColor="#E91E63"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="On Easy Mode, you must achieve a perfect score, get 300 Ocoins"
+                        android:textColor="#E91E63"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:layout_gravity="start"
+                            android:backgroundTintMode="multiply"
+                            android:contentDescription="@string/ocoins"
+                            app:srcCompat="@raw/ocoins" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="300"
+                            android:textColor="#E91E63"
+                            android:fontFamily="@font/bauhaus_regular"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_level_task04"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/rounded1"
+                    android:text="GO"
+                    android:textColor="@color/white_smoke"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/forest_green" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

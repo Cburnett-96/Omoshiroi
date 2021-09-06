@@ -4,265 +4,334 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_drawable"
     tools:context=".MenuActivity">
 
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@drawable/switchbackground"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/Linear_upper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:id="@+id/Linear_profile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/profile"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:contentDescription="@string/user_profile"
                     android:gravity="end"
-                    app:srcCompat="@raw/profile"
-                    android:contentDescription="@string/user_profile" />
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="5dp"
-    android:layout_gravity="center_vertical"
-    android:orientation="vertical">
+                    app:srcCompat="@raw/profile" />
 
-    <TextView
-        android:id="@+id/textLevel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/level"
-        android:textColorHint="@android:color/darker_gray"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        tools:text="Level: 1"/>
-    <TextView
-        android:id="@+id/textPoint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/points"
-        android:textColorHint="@android:color/darker_gray"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        tools:text="Points: 0"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical">
 
-</LinearLayout>
-</LinearLayout>
+                    <TextView
+                        android:id="@+id/textLevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/level"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="#004455"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:text="Level: 1" />
+
+                    <TextView
+                        android:id="@+id/textPoint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/points"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="#004455"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:text="XP: 0" />
+
+                </LinearLayout>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded1"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded1"
                 android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textOcoin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:textAllCaps="false"
-                        android:textSize="15sp"
-                        android:hint="@string/ocoins"
-                        android:layout_gravity="center_vertical"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        tools:text="0"/>
+                <TextView
+                    android:id="@+id/textOcoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:hint="@string/ocoins"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:textStyle="bold"
+                    tools:text="0" />
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="end"
                     android:backgroundTintMode="multiply"
-                    app:srcCompat="@raw/ocoins"
-                    android:contentDescription="@string/ocoins" />
+                    android:contentDescription="@string/ocoins"
+                    app:srcCompat="@raw/ocoins" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/Linear_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/setting"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="end"
-                    android:backgroundTintMode="multiply"
-                    app:srcCompat="@raw/setting"
+                    android:background="@drawable/ic_setting"
+                    android:backgroundTint="#004455"
                     android:contentDescription="@string/setting" />
             </LinearLayout>
         </LinearLayout>
-            <Button
-                android:id="@+id/walkThroughButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="20dp"
-                app:backgroundTint="#000000"
-                android:layout_gravity="end"
-                android:background="@drawable/ic_help_outline" />
-            <ImageView
-                android:id="@+id/menu"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                app:srcCompat="@raw/banner_omoshiroi"
-                android:layout_gravity="center"
-                android:contentDescription="@string/my_omoshiroi" />
-            <LinearLayout
-                android:id="@+id/Linear_arcade"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="50dp"
-                android:background="@raw/arcade">
-                <Button
-                    android:id="@+id/btn_arcade"
-                    android:layout_width="250dp"
-                    android:layout_height="100dp"
-                    android:background="#00FFFFFF"
-                    android:foreground="@raw/arcade" />
-            </LinearLayout>
-        <LinearLayout
-            android:id="@+id/Linear_mission"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@raw/mission">
-            <Button
-                android:id="@+id/btn_mission"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
-                android:background="#00FFFFFF"
-                android:foreground="@raw/mission" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layout_bg"
+        android:orientation="vertical">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        </LinearLayout>
             <LinearLayout
-                android:id="@+id/Linear_tokens"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@raw/tokens">
-                <Button
-                    android:id="@+id/btn_tokens"
-                    android:layout_width="250dp"
-                    android:layout_height="100dp"
-                    android:background="#00FFFFFF"
-                    android:foreground="@raw/tokens" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/Linear_ranking"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@raw/ranking">
-                <Button
-                    android:id="@+id/btn_ranking"
-                    android:layout_width="250dp"
-                    android:layout_height="100dp"
-                    android:background="#00FFFFFF"
-                    android:foreground="@raw/ranking" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/Linear_history"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@raw/history">
-                <Button
-                    android:id="@+id/btn_history"
-                    android:layout_width="250dp"
-                    android:layout_height="100dp"
-                    android:background="#00FFFFFF"
-                    android:foreground="@raw/history" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/Linear_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/walkThroughButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/ic_help_outline"
+                    app:backgroundTint="#004455" />
+
                 <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/my_omoshiroi"
+                    app:srcCompat="@raw/banner_omoshiroi" />
+
+                <Button
+                    android:id="@+id/btn_arcade"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    app:tint="@android:color/transparent"
-                    android:contentDescription="@string/spacing" />
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/layout_bg"
+                    android:elevation="10dp"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:stateListAnimator="@null"
+                    android:text="Arcade"
+                    android:textAllCaps="false"
+                    android:textColor="#004455"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:translationZ="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foregroundGravity="bottom"
+                    app:backgroundTint="#D6D9EA"
+                    app:icon="@raw/play_arcade"
+                    app:iconSize="80dp"
+                    app:iconTint="@null" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_mission"
+                        android:layout_width="200dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/switchbackground"
+                        android:elevation="5dp"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:stateListAnimator="@null"
+                        android:text="Mission"
+                        android:textAllCaps="false"
+                        android:textColor="#004455"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:translationZ="2dp"
+                        app:backgroundTint="#D6D9EA"
+                        app:icon="@raw/tasks_mission"
+                        app:iconGravity="top"
+                        app:iconSize="60dp"
+                        app:iconTint="@null" />
+
+                    <Button
+                        android:id="@+id/btn_tokens"
+                        android:layout_width="200dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/switchbackground"
+                        android:elevation="5dp"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:stateListAnimator="@null"
+                        android:text="Shop"
+                        android:textAllCaps="false"
+                        android:textColor="#004455"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:translationZ="2dp"
+                        app:backgroundTint="#D6D9EA"
+                        app:icon="@raw/shop_powerups"
+                        app:iconGravity="top"
+                        app:iconSize="60dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_ranking"
+                        android:layout_width="200dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/switchbackground"
+                        android:elevation="5dp"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:stateListAnimator="@null"
+                        android:text="Ranking"
+                        android:textAllCaps="false"
+                        android:textColor="#004455"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:translationZ="2dp"
+                        app:backgroundTint="#D6D9EA"
+                        app:icon="@raw/ranking_title"
+                        app:iconGravity="top"
+                        app:iconSize="60dp"
+                        app:iconTint="@null" />
+
+                    <Button
+                        android:id="@+id/btn_history"
+                        android:layout_width="200dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/switchbackground"
+                        android:elevation="5dp"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:stateListAnimator="@null"
+                        android:text="History"
+                        android:textAllCaps="false"
+                        android:textColor="#004455"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:translationZ="2dp"
+                        app:backgroundTint="#D6D9EA"
+                        app:icon="@raw/history_title"
+                        app:iconGravity="top"
+                        app:iconSize="60dp"
+                        app:iconTint="@null" />
+                </LinearLayout>
             </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+    </LinearLayout>
 
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
     <LinearLayout
         android:id="@+id/linearBGWalkthought"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@raw/walk1">
+        android:background="@raw/walk1"
+        android:visibility="gone">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom">
+
             <Button
                 android:id="@+id/skipButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_margin="10dp"
                 android:background="#00FFFFFF"
                 android:fontFamily="sans-serif-smallcaps"
                 android:text="Skip"
                 android:textAllCaps="false"
                 android:textSize="20sp"
-                android:layout_margin="10dp"
                 android:textStyle="bold" />
+
             <Button
                 android:id="@+id/nextWalkButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:layout_margin="10dp"
                 android:background="#00FFFFFF"
                 android:fontFamily="sans-serif-smallcaps"
                 android:text="@string/next"
+                android:textAlignment="viewEnd"
                 android:textAllCaps="false"
                 android:textSize="20sp"
-                android:textAlignment="viewEnd"
-                android:layout_margin="10dp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

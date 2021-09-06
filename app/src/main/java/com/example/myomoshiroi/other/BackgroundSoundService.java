@@ -1,4 +1,4 @@
-package com.example.myomoshiroi;
+package com.example.myomoshiroi.other;
 
 import android.app.Service;
 import android.content.Context;
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
+
+import com.example.myomoshiroi.R;
 
 public class BackgroundSoundService extends Service {
     private static Context appContext;

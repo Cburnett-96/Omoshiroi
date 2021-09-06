@@ -7,6 +7,7 @@ public class Constants {
 
     public static final int CORRECT_POINT = 20;
     public static final int INCORRECT_POINT = 5;
-    public static final int OCOINS = 3;
+    public static final int OCOINS = 5;
 
+    public static final String DATE_FORMAT = "yyyy MM dd HH:mm";
 }

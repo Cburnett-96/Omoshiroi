@@ -4,52 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_drawable"
+    android:background="@drawable/switchbackground"
     tools:context=".MissionActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
-    <LinearLayout
-        android:id="@+id/Linear_upper"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/rounded"
-        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/backButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_gravity="start"
                 android:background="@drawable/ic_back"
-                app:backgroundTint="#000000" />
+                app:backgroundTint="#004455" />
             <ImageView
-                android:id="@+id/imageView3"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 app:srcCompat="@raw/tasks_mission" />
         </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layout_bg"
+        android:orientation="vertical">
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                android:layout_height="5dp"
-                android:background="#E91E63"/>
+        <include layout="@layout/content_mission" />
+        <include layout="@layout/content_mission_daily" />
+        <include layout="@layout/content_mission_level" />
     </LinearLayout>
     </LinearLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

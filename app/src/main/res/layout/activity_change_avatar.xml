@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_bg"
+    android:gravity="center"
+    android:padding="10dp"
+    tools:context=".ChangeAvatarActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/playtime"
+            android:text="Change your avatar"
+            android:textAlignment="center"
+            android:textColor="@color/forest_green"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/changeAvatar"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            app:srcCompat="@raw/profile" />
+
+        <TextView
+            android:id="@+id/avatarName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Default"
+            android:textColor="@color/forest_green"
+            android:fontFamily="@font/bauhaus_regular"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <HorizontalScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/avatar7"
+                    android:layout_width="125dp"
+                    android:layout_height="fill_parent"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_android" />
+
+                <ImageView
+                    android:id="@+id/avatar1"
+                    android:layout_width="125dp"
+                    android:layout_height="fill_parent"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_bulb" />
+
+                <ImageView
+                    android:id="@+id/avatar2"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_cactus" />
+
+                <ImageView
+                    android:id="@+id/avatar3"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_chick" />
+
+                <ImageView
+                    android:id="@+id/avatar8"
+                    android:layout_width="125dp"
+                    android:layout_height="fill_parent"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_cliprobot" />
+
+                <ImageView
+                    android:id="@+id/avatar4"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_cup" />
+
+                <ImageView
+                    android:id="@+id/avatar5"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_hat" />
+
+                <ImageView
+                    android:id="@+id/avatar9"
+                    android:layout_width="125dp"
+                    android:layout_height="fill_parent"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_head" />
+
+                <ImageView
+                    android:id="@+id/avatar10"
+                    android:layout_width="125dp"
+                    android:layout_height="fill_parent"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_monitor" />
+
+                <ImageView
+                    android:id="@+id/avatar6"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_pinaple" />
+
+                <ImageView
+                    android:id="@+id/avatar11"
+                    android:layout_width="125dp"
+                    android:layout_height="fill_parent"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_robot" />
+
+                <ImageView
+                    android:id="@+id/avatar12"
+                    android:layout_width="125dp"
+                    android:layout_height="fill_parent"
+                    android:padding="15dp"
+                    app:srcCompat="@raw/avatar_skull" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/switchbackground"
+            android:fontFamily="@font/bauhaus_regular"
+            app:backgroundTint="#004455"
+            android:text="Save"
+            android:textColor="@color/white_smoke"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>
