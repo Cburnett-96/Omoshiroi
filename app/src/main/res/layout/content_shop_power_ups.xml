@@ -12,14 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:orientation="horizontal">
             <LinearLayout
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:background="@drawable/switchbackground"
@@ -39,8 +43,9 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:fitsSystemWindows="true">
                     <TextView
                         android:id="@+id/timerAddOneMinCount"
@@ -54,24 +59,24 @@
                         android:textStyle="bold" />
                     <ImageView
                         android:id="@+id/powerUp1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="100dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/timer_addonemin" />
+                        app:srcCompat="@raw/shop_timer_addonemin" />
                 </RelativeLayout>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="+1"
-                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:textColor="#E91E63"
                     android:fontFamily="@font/bauhaus_regular"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
                     <Button
                         android:id="@+id/btn_buyAdd"
@@ -101,8 +106,9 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:background="@drawable/switchbackground"
@@ -111,7 +117,7 @@
                 android:translationZ="2dp"
                 android:orientation="vertical">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_margin="10dp"
@@ -121,8 +127,9 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:fitsSystemWindows="true">
                     <TextView
                         android:id="@+id/timerFreezeCount"
@@ -136,15 +143,16 @@
                         android:textStyle="bold" />
                     <ImageView
                         android:id="@+id/powerUp2"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="100dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/timer_freeze" />
+                        app:srcCompat="@raw/shop_timer_freeze" />
                 </RelativeLayout>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="+1"
                     android:layout_gravity="center"
                     android:textColor="#E91E63"
@@ -153,7 +161,7 @@
                     android:textStyle="bold" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
                     <Button
                         android:id="@+id/btn_buyFreeze"
@@ -184,13 +192,21 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="horizontal">
             <LinearLayout
-                android:layout_width="130dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
                 android:gravity="center"
                 android:background="@drawable/switchbackground"
                 android:elevation="5dp"
@@ -208,8 +224,9 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:fitsSystemWindows="true">
                     <TextView
                         android:id="@+id/timerStopCount"
@@ -222,11 +239,11 @@
                         android:textStyle="bold" />
                     <ImageView
                         android:id="@+id/powerUp3"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="100dp"
+                        android:layout_height="130dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/timer_stop" />
+                        app:srcCompat="@raw/shop_timer_stop" />
                 </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
@@ -268,6 +285,7 @@
                         app:backgroundTint="@color/forest_green" />
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -1,7 +1,6 @@
 package com.example.myomoshiroi;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
@@ -22,7 +21,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import com.example.myomoshiroi.model.Attempt;
 import com.example.myomoshiroi.model.UserHistory;
 import com.example.myomoshiroi.other.SoundPoolManager;
-import com.example.myomoshiroi.other.Utils;
+import com.example.myomoshiroi.other.EasyModeTenses;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -133,7 +132,7 @@ public class DailyReward {
                 attempt3,
                 attempt4
         );
-        currentDate = Utils.formatDate(attempt.getCreatedTime());
+        currentDate = EasyModeTenses.formatDate(attempt.getCreatedTime());
         title = "Daily Reward";
         createdTime = currentDate;
 

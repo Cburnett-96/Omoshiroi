@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayoutAvatars"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayoutAvatars"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:visibility="gone"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:visibility="gone">
+
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="5dp"
         android:background="@drawable/switchbackground"
-        android:layout_gravity="center"
         android:elevation="5dp"
+        android:orientation="vertical"
         android:stateListAnimator="@null"
-        android:translationZ="2dp"
-        android:orientation="vertical">
+        android:translationZ="2dp">
 
         <Button
             android:id="@+id/btn_changeAvatar"
@@ -23,13 +24,14 @@
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:fontFamily="@font/bauhaus_regular"
             android:background="@drawable/rounded1"
+            android:fontFamily="@font/bauhaus_regular"
             android:text="Change Avatar"
             android:textColor="@color/white_smoke"
             android:textSize="12sp"
-            app:backgroundTint="@color/forest_green"/>
+            app:backgroundTint="@color/forest_green" />
     </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -41,39 +43,42 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
-                    android:gravity="center"
                     android:elevation="5dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:stateListAnimator="@null"
-                    android:translationZ="2dp"
-                    android:orientation="vertical">
+                    android:translationZ="2dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Andry"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageAndry"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_android" />
+                        app:srcCompat="@raw/shop_avatar_android" />
 
                     <Button
                         android:id="@+id/btn_buyAndry"
@@ -82,9 +87,9 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:text="5000"
                         android:textColor="@color/white_smoke"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
                         app:icon="@raw/ocoins"
@@ -94,34 +99,35 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
-                    android:gravity="center"
                     android:elevation="5dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:stateListAnimator="@null"
-                    android:translationZ="2dp"
-                    android:orientation="vertical">
+                    android:translationZ="2dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Bulby"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageBulby"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_bulb" />
+                        app:srcCompat="@raw/shop_avatar_bulb" />
 
                     <Button
                         android:id="@+id/btn_buyBulby"
@@ -130,8 +136,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="5200"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="5200"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
@@ -143,14 +149,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -159,20 +168,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Cackytus"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageCackytus"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_cactus" />
+                        app:srcCompat="@raw/shop_avatar_cactus" />
 
                     <Button
                         android:id="@+id/btn_buyCackytus"
@@ -181,8 +190,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="5000"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="5000"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
@@ -193,9 +202,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -204,20 +214,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Chicky"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageChicky"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_chick" />
+                        app:srcCompat="@raw/shop_avatar_chick" />
 
                     <Button
                         android:id="@+id/btn_buyChicky"
@@ -226,8 +236,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="5100"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="5100"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
@@ -239,14 +249,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -255,20 +268,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Clibot"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageClibot"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_cliprobot" />
+                        app:srcCompat="@raw/shop_avatar_cliprobot" />
 
                     <Button
                         android:id="@+id/btn_buyClibot"
@@ -288,9 +301,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -299,20 +313,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Cupies"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageCupies"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_cup" />
+                        app:srcCompat="@raw/shop_avatar_cup" />
 
                     <Button
                         android:id="@+id/btn_buyCupies"
@@ -321,8 +335,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="7500"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="7500"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
@@ -334,14 +348,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -350,20 +367,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Hatty"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageHatty"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_hat" />
+                        app:srcCompat="@raw/shop_avatar_hat" />
 
                     <Button
                         android:id="@+id/btn_buyHatty"
@@ -372,8 +389,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="7500"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="7500"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
@@ -384,9 +401,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -395,20 +413,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Headyglass"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageHeadyglass"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_head" />
+                        app:srcCompat="@raw/shop_avatar_head" />
 
                     <Button
                         android:id="@+id/btn_buyHeadyglass"
@@ -417,8 +435,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="6200"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="6200"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
@@ -430,14 +448,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -446,20 +467,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Monisad"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageMonisad"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_monitor" />
+                        app:srcCompat="@raw/shop_avatar_monitor" />
 
                     <Button
                         android:id="@+id/btn_buyMonisad"
@@ -468,8 +489,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="5100"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="5100"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
@@ -480,9 +501,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -491,20 +513,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Pineglass"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imagePineglass"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_pinaple" />
+                        app:srcCompat="@raw/shop_avatar_pinapple" />
 
                     <Button
                         android:id="@+id/btn_buyPineglass"
@@ -513,8 +535,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="5200"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="5200"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
@@ -526,14 +548,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -542,20 +567,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Jobot"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageJobot"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_robot" />
+                        app:srcCompat="@raw/shop_avatar_robot" />
 
                     <Button
                         android:id="@+id/btn_buyJobot"
@@ -564,8 +589,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="5000"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="5000"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"
@@ -576,9 +601,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/switchbackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -587,20 +613,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/bauhaus_regular"
                         android:gravity="center"
                         android:text="Skullyhead"
                         android:textColor="#E91E63"
-                        android:fontFamily="@font/bauhaus_regular"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageSkullyhead"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="130dp"
+                        android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/user_profile"
-                        app:srcCompat="@raw/avatar_skull" />
+                        app:srcCompat="@raw/shop_avatar_skull" />
 
                     <Button
                         android:id="@+id/btn_buySkullyhead"
@@ -609,8 +635,8 @@
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded1"
-                        android:text="6400"
                         android:fontFamily="@font/bauhaus_regular"
+                        android:text="6400"
                         android:textColor="@color/white_smoke"
                         android:textSize="12sp"
                         app:backgroundTint="@color/forest_green"

@@ -139,38 +139,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#80000000"
-        android:visibility="gone"
-        android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_horizontal">
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/register_Progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:layout_gravity="center"/>
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/loading"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/my_omoshiroi"
+                app:srcCompat="@raw/splash_screen_loading" />
+
+        </LinearLayout>
+
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:textColor="@color/white"
-            android:fontFamily="@font/bauhaus_regular"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:text="@string/loading"
-            android:textSize="25sp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
             android:layout_margin="5dp"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
             android:text="Check your internet connection if you're stuck here."
+            android:textColor="@color/white"
             android:textSize="15sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

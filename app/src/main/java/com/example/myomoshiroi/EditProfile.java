@@ -26,7 +26,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.myomoshiroi.model.Attempt;
 import com.example.myomoshiroi.model.UserHistory;
 import com.example.myomoshiroi.other.SoundPoolManager;
-import com.example.myomoshiroi.other.Utils;
+import com.example.myomoshiroi.other.EasyModeTenses;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -98,7 +98,7 @@ public class EditProfile {
                 attempt3,
                 attempt4
         );
-        currentDate = Utils.formatDate(attempt.getCreatedTime());
+        currentDate = EasyModeTenses.formatDate(attempt.getCreatedTime());
         title = "Profile Changes";
         createdTime = currentDate;
 

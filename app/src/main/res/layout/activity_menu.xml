@@ -140,16 +140,15 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/walkThroughButton"
+                    android:id="@+id/testbtn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="end"
                     android:layout_margin="5dp"
-                    android:background="@drawable/ic_help_outline"
+                    android:background="@drawable/ic_info"
                     app:backgroundTint="#004455" />
 
                 <ImageView
-                    android:id="@+id/menu"
                     android:layout_width="300dp"
                     android:layout_height="200dp"
                     android:layout_gravity="center"
@@ -261,7 +260,7 @@
                         android:textStyle="bold"
                         android:translationZ="2dp"
                         app:backgroundTint="#D6D9EA"
-                        app:icon="@raw/ranking_title"
+                        app:icon="@raw/ranking"
                         app:iconGravity="top"
                         app:iconSize="60dp"
                         app:iconTint="@null" />
@@ -284,7 +283,7 @@
                         android:textStyle="bold"
                         android:translationZ="2dp"
                         app:backgroundTint="#D6D9EA"
-                        app:icon="@raw/history_title"
+                        app:icon="@raw/history"
                         app:iconGravity="top"
                         app:iconSize="60dp"
                         app:iconTint="@null" />
@@ -293,7 +292,6 @@
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/linearBGWalkthought"
         android:layout_width="match_parent"

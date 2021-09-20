@@ -14,14 +14,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myomoshiroi.model.UserHistory;
 import com.example.myomoshiroi.model.Attempt;
 import com.example.myomoshiroi.other.Constants;
 import com.example.myomoshiroi.other.SoundPoolManager;
-import com.example.myomoshiroi.other.Utils;
+import com.example.myomoshiroi.other.EasyModeTenses;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -39,7 +38,7 @@ public class ResultActivity extends AppCompatActivity {
     DatabaseReference databaseReference, uidRef, uidRefMission;
     SharedPreferences prefs;
     int getpoints, getocoins, getTotalocoins, earnedPoints, earnedOcoins, correctAnswer, incorrectAnswer,
-            easyCount, getTotalCountEasy;
+            gettask01, getTotalCountEasy, dailyEasyCount, getTotalDailyEasyCount, gettask04;
     String title, descriptions, createdTime, currentDate;
 
     @Override
@@ -53,19 +52,26 @@ public class ResultActivity extends AppCompatActivity {
 
         exitButton = findViewById(R.id.closeButton);
         playAgainButton = findViewById(R.id.playAgainButton);
-
-        Intent intent = getIntent();
-        correctAnswer = intent.getIntExtra(Constants.CORRECT, 0);
-        incorrectAnswer = intent.getIntExtra(Constants.INCORRECT, 0);
-        easyCount = intent.getIntExtra("EasyCount", 0);
-        earnedPoints = (correctAnswer * Constants.CORRECT_POINT) - (incorrectAnswer * Constants.INCORRECT_POINT);
-        earnedOcoins = (correctAnswer * Constants.OCOINS);
-
         tvCorrect = findViewById(R.id.textValueCorrect);
         tvIncorrect = findViewById(R.id.textValueInCorrect);
         tvEarned = findViewById(R.id.textValuePointEarn);
         tvOcoin = findViewById(R.id.textValueOcoinEarn);
         imageViewGreet = findViewById(R.id.imageViewGreetings);
+
+        Intent intent = getIntent();
+        correctAnswer = intent.getIntExtra(Constants.CORRECT, 0);
+        incorrectAnswer = intent.getIntExtra(Constants.INCORRECT, 0);
+        gettask01 = intent.getIntExtra("EasyCount", 0);
+        dailyEasyCount = intent.getIntExtra("EasyCount", 0);
+        earnedPoints = (correctAnswer * Constants.CORRECT_POINT) - (incorrectAnswer * Constants.INCORRECT_POINT);
+        earnedOcoins = (correctAnswer * Constants.OCOINS);
+
+        if (correctAnswer == 10){
+            gettask04 = 10;
+        }
+
+        Intent intentSubject = getIntent();
+        String subject = intentSubject.getStringExtra(Constants.SUBJECT);
 
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +87,7 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SoundPoolManager.playSound(1);
                 Intent intent = new Intent(ResultActivity.this,EasyTopicActivity.class);
+                intent.putExtra(Constants.SUBJECT, subject);
                 startActivity(intent);
                 finish();
             }
@@ -93,8 +100,8 @@ public class ResultActivity extends AppCompatActivity {
                 earnedOcoins
         );
 
-        currentDate = Utils.formatDate(attempt.getCreatedTime());
-        title = "Easy Mode";
+        currentDate = EasyModeTenses.formatDate(attempt.getCreatedTime());
+        title = "Easy Mode ("+subject+")";
         descriptions = "You've got "+correctAnswer+" correct and "+incorrectAnswer+" incorrect answer. " +
                 "Earned "+earnedPoints+ " experience points and "+earnedOcoins+" ocoins";
         createdTime = currentDate;
@@ -150,7 +157,8 @@ public class ResultActivity extends AppCompatActivity {
         getocoins = prefs.getInt("ocoins",0);
         getTotalocoins = prefs.getInt("totalOcoins",0);
         getpoints = prefs.getInt("points",0);
-        getTotalCountEasy = prefs.getInt("taskEasyCount",0);
+        getTotalCountEasy = prefs.getInt("task01",0);
+        getTotalDailyEasyCount = prefs.getInt("taskDailyEasyCount",0);
         //        Get Firebase auth instance
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -159,7 +167,9 @@ public class ResultActivity extends AppCompatActivity {
         uidRef.child("Ocoin").setValue(getocoins + earnedOcoins);
         uidRef.child("Point").setValue(getpoints + earnedPoints);
         uidRef.child("TotalOcoins").setValue(getTotalocoins + earnedOcoins);
-        uidRefMission.child("EasyCount").setValue(easyCount + getTotalCountEasy);
+        uidRefMission.child("Task01").setValue(getTotalCountEasy + gettask01);
+        uidRefMission.child("DailyEasyCount").setValue(getTotalDailyEasyCount + dailyEasyCount);
+        uidRefMission.child("Task04").setValue(gettask04);
     }
     private  void SaveHistory(){
         firebaseDatabase = FirebaseDatabase.getInstance();

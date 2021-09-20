@@ -1,16 +1,19 @@
 package com.example.myomoshiroi;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.bumptech.glide.Glide;
 import com.example.myomoshiroi.other.SoundPoolManager;
 
 public class PlayArcadePopUp {
@@ -105,6 +108,9 @@ public class PlayArcadePopUp {
 
         buttonEasy.setOnClickListener(v -> {
             SoundPoolManager.playSound(1);
+            popupTopic.dismiss();
+            EasyModeChoosen popUp = new EasyModeChoosen();
+            popUp.showPopupWindow(v);
             /*AlertDialog.Builder alertExit = new AlertDialog.Builder(view.getContext());
             alertExit.setTitle("Easy Mode")
                     .setMessage("In this mode, you can randomly responses; verb tenses, or complete sentences " +
@@ -117,9 +123,6 @@ public class PlayArcadePopUp {
                     });
             AlertDialog dialog = alertExit.create();
             dialog.show();*/
-            popupTopic.dismiss();
-            Intent intent = new Intent(view.getContext(), EasyTopicActivity.class);
-            view.getContext().startActivity(intent);
         });
         buttonMedium.setOnClickListener(v -> {
             SoundPoolManager.playSound(0);

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,22 +13,26 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myomoshiroi.model.Attempt;
 import com.example.myomoshiroi.model.UserData;
 import com.example.myomoshiroi.model.UserHistory;
 import com.example.myomoshiroi.model.UserItem;
 import com.example.myomoshiroi.model.UserMission;
-import com.example.myomoshiroi.other.Utils;
+import com.example.myomoshiroi.other.EasyModeTenses;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -47,6 +52,7 @@ public class SignupActivity extends AppCompatActivity {
     com.google.android.material.textfield.TextInputLayout passwordHint, coPassHint, emailHint;
     private RadioButton radioMale, radioFemale;
     Button button_register;
+    ImageView loading;
     TextView text_view_login;
     LinearLayout linearProgress, linearLayout;
 
@@ -59,7 +65,8 @@ public class SignupActivity extends AppCompatActivity {
     boolean Andry, Bulby, Cackytus, Chicky, Clibot, Cupies, Hatty, Headyglass, Jobot, Monisad, Pineglass, Skullyhead;
     int level, point, coin, totalocoins;
     int timerAdd, timerStop, timerFreeze;
-    int easyCount;
+    int dailyEasyCount, task01, task02, task03, task04;
+    boolean DailyTask,LevelTask01,LevelTask02,LevelTask03,LevelTask04;
     String gender = "";
 
     String title, descriptions, createdTime, currentDate;
@@ -75,6 +82,7 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         //        get all view id from XML
         linearProgress = findViewById(R.id.linearLoadingProgress);
+        loading = findViewById(R.id.loading);
         linearLayout = findViewById(R.id.linearLayout);
         edit_txt_Fullname = findViewById(R.id.edit_txt_Fullname);
         edit_txt_LRN = findViewById(R.id.edit_txt_LRN);
@@ -95,22 +103,7 @@ public class SignupActivity extends AppCompatActivity {
         coin = 30;
         totalocoins = 30;
 
-        //starting mission items
-        easyCount = 0;
-
         //starting items of the new user
-        Andry = false;
-        Bulby = false;
-        Cackytus = false;
-        Chicky = false;
-        Clibot = false;
-        Cupies = false;
-        Hatty = false;
-        Headyglass = false;
-        Jobot = false;
-        Monisad = false;
-        Pineglass = false;
-        Skullyhead = false;
         timerAdd = 1;
         timerStop = 1;
         timerFreeze = 1;
@@ -129,7 +122,7 @@ public class SignupActivity extends AppCompatActivity {
                 attempt3,
                 attempt4
         );
-        currentDate = Utils.formatDate(attempt.getCreatedTime());
+        currentDate = EasyModeTenses.formatDate(attempt.getCreatedTime());
         title = "Account Registration";
         descriptions = "You've created your omoshiroi account and earned initial reward 300 experience points and 30 Ocoins " +
                 "with extra power-ups that can use in-game.";
@@ -150,89 +143,97 @@ public class SignupActivity extends AppCompatActivity {
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (!validateFullname() | !validateLRN() | !validateEmail() | !validatePassword() | checkUserGender()) {
-                    return;
-                }
-
-                if (password.equals(co_password)) {
-                    //    progressbar VISIBLE
-                    linearProgress.setVisibility(View.VISIBLE);
-
-                    databaseReference = FirebaseDatabase.getInstance().getReference();
-                    uidRef = databaseReference.child("UserData");
-                    Query query = uidRef.orderByChild("EmailId").equalTo(email);
-                    ValueEventListener eventListener = new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (!snapshot.exists()) {
-                                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener
-                                        (new OnCompleteListener<AuthResult>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                                if (task.isSuccessful()) {
-
-                                                    UserData data = new UserData(fullname, lrn, email, gender, level, point, coin, avatar, totalocoins);
-
-                                                    FirebaseDatabase.getInstance().getReference("UserData")
-                                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(data).
-                                                            addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                                @Override
-                                                                public void onComplete(@NonNull Task<Void> task) {
-                                                                    SharedPreferences.Editor editor = prefs.edit();
-                                                                    editor.putString("avatarName", "profile");
-                                                                    editor.putString("music setting", "on");
-                                                                    editor.putString("sound setting", "on");
-                                                                    editor.putString("walkthrough", "on");
-                                                                    editor.apply();
-
-                                                                    //    progressbar GONE
-                                                                    linearProgress.setVisibility(View.GONE);
-                                                                    linearLayout.setVisibility(View.GONE);
-                                                                    Toast.makeText(SignupActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-                                                                    AlertDialog.Builder alert = new AlertDialog.Builder(SignupActivity.this);
-                                                                    alert.setTitle("WELCOME TO OMOSHIROI!")
-                                                                            .setMessage("First and foremost, thank you for signing up. For a new member, the initial reward are 300 experience points and 30 ocoins " +
-                                                                                    "with extra power-ups that can use in-game.\n" +
-                                                                                    "Good luck, and enjoy yourself while playing the game.")
-                                                                            .setIcon(android.R.drawable.ic_menu_info_details)
-                                                                            .setCancelable(false)
-                                                                            .setPositiveButton("Okay!", (dialog, which) -> {
-                                                                                SaveItems();
-                                                                                SaveMission();
-                                                                                SaveHistory();
-                                                                                Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                                                                                startActivity(intent);
-                                                                                finish();
-                                                                            });
-                                                                    AlertDialog dialog = alert.create();
-                                                                    dialog.show();
-                                                                }
-                                                            });
-                                                } else {
-                                                    //    progressbar GONE
-                                                    linearProgress.setVisibility(View.GONE);
-                                                    Toast.makeText(SignupActivity.this, "Connection Error!", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
-                            } else {
-                                //    progressbar GONE
-                                linearProgress.setVisibility(View.GONE);
-                                Toast.makeText(SignupActivity.this, "Your email address is already in use!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    };
-                    query.addListenerForSingleValueEvent(eventListener);
-                } else {
-                    Toast.makeText(SignupActivity.this, "Password didn't match", Toast.LENGTH_SHORT).show();
-                }
+                ValidateUserSignUp();
             }
         });
+    }
+    private void ValidateUserSignUp(){
+        if (!validateFullname() | !validateLRN() | !validateEmail() | !validatePassword() | checkUserGender()) {
+            return;
+        }
+
+        if (password.equals(co_password)) {
+            //    progressbar VISIBLE
+            linearProgress.setVisibility(View.VISIBLE);
+            Glide.with(SignupActivity.this)
+                    .load(R.raw.splash_screen_loading)
+                    .into(loading);
+
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+            uidRef = databaseReference.child("UserData");
+            Query query = uidRef.orderByChild("EmailId").equalTo(email);
+            ValueEventListener eventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (!snapshot.exists()) {
+                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener
+                                (new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                        if (task.isSuccessful()) {
+
+                                            UserData data = new UserData(fullname, lrn, email, gender, level, point, coin, avatar, totalocoins);
+
+                                            FirebaseDatabase.getInstance().getReference("UserData")
+                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(data).
+                                                    addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            SharedPreferences.Editor editor = prefs.edit();
+                                                            editor.putString("avatarName", "profile");
+                                                            editor.putString("music setting", "on");
+                                                            editor.putString("sound setting", "on");
+                                                            editor.putString("walkthrough", "on");
+                                                            editor.apply();
+
+                                                            //    progressbar GONE
+                                                            linearProgress.setVisibility(View.GONE);
+                                                            linearLayout.setVisibility(View.GONE);
+                                                            Glide.with(SignupActivity.this).clear(loading);
+                                                            Toast.makeText(SignupActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                                            AlertDialog.Builder alert = new AlertDialog.Builder(SignupActivity.this);
+                                                            alert.setTitle("WELCOME TO OMOSHIROI!")
+                                                                    .setMessage("First and foremost, thank you for signing up. For a new member, the initial reward are 300 experience points and 30 ocoins " +
+                                                                            "with extra power-ups that can use in-game.\n" +
+                                                                            "Good luck, and enjoy yourself while playing the game.")
+                                                                    .setIcon(android.R.drawable.ic_menu_info_details)
+                                                                    .setCancelable(false)
+                                                                    .setPositiveButton("Okay!", (dialog, which) -> {
+                                                                        SaveItems();
+                                                                        SaveMission();
+                                                                        SaveHistory();
+                                                                        Intent intent = new Intent(SignupActivity.this, MenuActivity.class);
+                                                                        startActivity(intent);
+                                                                        finish();
+                                                                    });
+                                                            AlertDialog dialog = alert.create();
+                                                            dialog.show();
+                                                        }
+                                                    });
+                                        } else {
+                                            //    progressbar GONE
+                                            linearProgress.setVisibility(View.GONE);
+                                            Glide.with(SignupActivity.this).clear(loading);
+                                            Toast.makeText(SignupActivity.this, "Connection Error!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                    } else {
+                        //    progressbar GONE
+                        linearProgress.setVisibility(View.GONE);
+                        Glide.with(SignupActivity.this).clear(loading);
+                        Toast.makeText(SignupActivity.this, "Your email address is already in use!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            };
+            query.addListenerForSingleValueEvent(eventListener);
+        } else {
+            Toast.makeText(SignupActivity.this, "Password didn't match", Toast.LENGTH_SHORT).show();
+        }
     }
     private void ValidateUserInput(){
         edit_txt_Email.addTextChangedListener(new TextWatcher() {
@@ -285,6 +286,20 @@ public class SignupActivity extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {
+            }
+        });
+        edit_txt_CoPass.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Dismiss keyboard on Click
+                    InputMethodManager inputManager = (InputMethodManager)
+                            getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+                    return true;
+                }
+                return false;
             }
         });
     }
@@ -370,7 +385,8 @@ public class SignupActivity extends AppCompatActivity {
     private void SaveMission() {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("UserMission");
-        UserMission mission = new UserMission(easyCount);
+        UserMission mission = new UserMission(dailyEasyCount, task01, task02, task03, task04,
+                DailyTask,LevelTask01,LevelTask02,LevelTask03,LevelTask04);
         FirebaseDatabase.getInstance().getReference("UserMission")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(mission);
     }

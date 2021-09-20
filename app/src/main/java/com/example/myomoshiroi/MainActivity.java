@@ -15,15 +15,19 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myomoshiroi.other.SoundPoolManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout linearProgress;
     private DatabaseReference databaseReference, uidRef;
     FirebaseAuth mAuth;
+    ImageView loading;
 
     SharedPreferences prefs;
     String loginemail, loginpassword, music, sound;
@@ -56,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_main);
-        FirstBootCheckInternetConnection();
         //deviceID = Settings.Secure.getString(this.getContentResolver(),Settings.Secure.ANDROID_ID);
         //  get all view id from XML
         txtemail = findViewById(R.id.editTextEmail);
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         linearProgress = findViewById(R.id.linearLoadingProgress);
         text_view_signup = findViewById(R.id.text_view_signup);
         enterBtn = findViewById(R.id.btn_continue);
+        loading = findViewById(R.id.loading);
 
         //  saving settings
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -75,52 +80,18 @@ public class MainActivity extends AppCompatActivity {
         enterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!validateEmail() | !validatePassword()) {
-                    return;
+                validateLogIn();
+            }
+        });
+        // handle enter password edit text
+        txtpassword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    validateLogIn();
+                    return true;
                 }
-                //    progressbar VISIBLE
-                linearProgress.setVisibility(View.VISIBLE);
-                databaseReference = FirebaseDatabase.getInstance().getReference();
-                uidRef = databaseReference.child("UserData");
-                Query query = uidRef.orderByChild("EmailId").equalTo(loginemail);
-                ValueEventListener eventListener = new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            mAuth.signInWithEmailAndPassword(loginemail, loginpassword).
-                                    addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            if (task.isSuccessful()) {
-                                                //    progressbar GONE
-                                                linearProgress.setVisibility(View.GONE);
-                                                SharedPreferences.Editor editor = prefs.edit();
-                                                editor.putString("avatarName", "profile");
-                                                editor.putString("music setting", "on");
-                                                editor.putString("sound setting", "on");
-                                                editor.putString("walkthrough", "on");
-                                                editor.apply();
-                                                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                                                startActivity(intent);
-                                                finish();
-                                            } else {
-                                                //    progressbar GONE
-                                                linearProgress.setVisibility(View.GONE);
-                                                Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
-                        } else {
-                            linearProgress.setVisibility(View.GONE);
-                            Toast.makeText(MainActivity.this, "Wrong Email Address", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                };
-                query.addListenerForSingleValueEvent(eventListener);
+                return false;
             }
         });
         //        handle forgot button
@@ -140,6 +111,67 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void validateLogIn(){
+        if (!validateEmail() | !validatePassword()) {
+            return;
+        }
+        //    progressbar VISIBLE
+        linearProgress.setVisibility(View.VISIBLE);
+        Glide.with(MainActivity.this)
+                .load(R.raw.splash_screen_loading)
+                .into(loading);
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        uidRef = databaseReference.child("UserData");
+        Query query = uidRef.orderByChild("EmailId").equalTo(loginemail);
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    mAuth.signInWithEmailAndPassword(loginemail, loginpassword).
+                            addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Dismiss keyboard on Click
+                                        InputMethodManager inputManager = (InputMethodManager)
+                                                getSystemService(Context.INPUT_METHOD_SERVICE);
+                                        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                                                InputMethodManager.HIDE_NOT_ALWAYS);
+
+                                        //    progressbar GONE
+                                        linearProgress.setVisibility(View.GONE);
+                                        Glide.with(MainActivity.this).clear(loading);
+                                        SharedPreferences.Editor editor = prefs.edit();
+                                        editor.putString("avatarName", "profile");
+                                        editor.putString("music setting", "on");
+                                        editor.putString("sound setting", "on");
+                                        editor.putString("walkthrough", "on");
+                                        editor.apply();
+                                        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        //    progressbar GONE
+                                        linearProgress.setVisibility(View.GONE);
+                                        Glide.with(MainActivity.this).clear(loading);
+                                        Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                } else {
+                    linearProgress.setVisibility(View.GONE);
+                    Glide.with(MainActivity.this).clear(loading);
+                    Toast.makeText(MainActivity.this, "Wrong Email Address", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        };
+        query.addListenerForSingleValueEvent(eventListener);
     }
 
     private boolean validateEmail() {
@@ -165,102 +197,5 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return true;
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (mAuth.getCurrentUser() != null) {
-            SharedPreferences.Editor editor = prefs.edit();
-            music = prefs.getString("music setting", null);
-            sound = prefs.getString("sound setting", null);
-            //walk = prefs.getString("walkthrough",null);
-            if (music.equals("off")) {
-                editor.putString("music setting", "off");
-            } else {
-                editor.putString("music setting", "on");
-            }
-            if (sound.equals("off")) {
-                editor.putString("sound setting", "off");
-            } else {
-                editor.putString("sound setting", "on");
-            }
-            editor.apply();
-            CheckInternetConnection();
-        }
-    }
-
-    private void FirstBootCheckInternetConnection() {
-        if (!isNetworkAvailable()) {
-            new AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("OMOSHIROI Need Internet Connection Access")
-                    .setMessage("Please Check Your Internet Connection")
-                    .setCancelable(false)
-                    .setPositiveButton("Try again!", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            FirstBootCheckInternetConnection();
-                        }
-                    })
-                    .setNegativeButton("Close", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            SoundPoolManager.cleanUp();
-                            finishAffinity();
-                            System.exit(0);
-                        }
-                    })
-                    .show();
-        }
-    }
-
-    private void CheckInternetConnection() {
-        if (!isNetworkAvailable()) {
-            new AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("OMOSHIROI Need Internet Connection Access")
-                    .setMessage("Please Check Your Internet Connection")
-                    .setCancelable(false)
-                    .setPositiveButton("Try again!", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            CheckInternetConnection();
-                        }
-                    })
-                    .setNegativeButton("Close", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            SoundPoolManager.cleanUp();
-                            finishAffinity();
-                            System.exit(0);
-                        }
-                    })
-                    .show();
-        } else {
-            Intent i = new Intent(MainActivity.this, MenuActivity.class);
-            startActivity(i);
-            finish();
-        }
-
-    }
-
-    public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager != null) {
-            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
-                if (capabilities != null) {
-                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-
-                        return true;
-                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-
-                        return true;
-                    } else return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET);
-                }
-            }
-        }
-        return false;
     }
 }

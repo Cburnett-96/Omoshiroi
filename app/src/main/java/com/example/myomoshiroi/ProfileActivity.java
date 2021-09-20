@@ -148,6 +148,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
                                 startActivity(intent);
+                                overridePendingTransition(0, 0);
                                 finish();
                             }
                         })
@@ -168,6 +169,7 @@ public class ProfileActivity extends AppCompatActivity {
                 SoundPoolManager.playSound(0);
                 Intent intent = new Intent(ProfileActivity.this, MenuActivity.class);
                 startActivity(intent);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });

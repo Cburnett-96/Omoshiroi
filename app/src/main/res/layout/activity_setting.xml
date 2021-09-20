@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/switchbackground"
-    android:gravity="center"
-    android:padding="10dp"
     tools:context=".SettingActivity">
 
     <LinearLayout
+        android:id="@+id/linearSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/layout_bg"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -108,30 +109,54 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
+                android:layout_margin="20dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/btn_feedback"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/feedback"
+                        android:id="@+id/walkThroughButton"
+                        android:layout_width="60dp"
+                        android:layout_height="70dp"
+                        android:background="@raw/walk_through"
                         app:backgroundTint="#000000" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Walk through"
+                        android:textColor="#004455"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/bauhaus_regular"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_aboutUs"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@raw/about_us"
+                        app:backgroundTint="@null" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:text="@string/about"
                         android:textColor="#004455"
                         android:textSize="15sp"
@@ -140,9 +165,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -150,12 +175,14 @@
                         android:id="@+id/btn_HelpFAQ"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/help"
-                        app:backgroundTint="#000000" />
+                        app:backgroundTint="#004455" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:text="@string/help_faq"
                         android:textColor="#004455"
                         android:textSize="15sp"
@@ -179,6 +206,267 @@
                 app:strokeWidth="2dp"
                 app:icon="@drawable/ic_exit"
                 app:iconTint="@color/red" />
+
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearAbout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/switchbackground"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="start"
+                android:background="@drawable/ic_back"
+                app:backgroundTint="#004455" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingStart="0dp"
+                android:paddingEnd="30dp"
+                android:text="@string/about"
+                android:textAlignment="center"
+                android:textColor="@color/forest_green"
+                android:textSize="25sp"
+                android:fontFamily="@font/playtime"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/layout_bg"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="OMOSHIROI"
+            android:textAlignment="center"
+            android:textColor="@color/forest_green"
+            android:textSize="35sp"
+            android:fontFamily="@font/bauhaus_regular"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_Version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="50dp"
+            android:textAlignment="center"
+            android:hint="Version"
+            android:fontFamily="@font/bauhaus_regular"
+            android:textColor="#004455"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="OMOSHIROI: IMPLEMENTATION OF NATURAL LANGUAGE PROCESSING IN STRUCTURAL GAMIFICATION FOR ENGLISH PROFICIENCY DEVELOPMENT."
+            android:fontFamily="@font/lato_regular"
+            android:textColor="#004455"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="Meet the team"
+            android:textAlignment="center"
+            android:textColor="@color/forest_green"
+            android:textSize="25sp"
+            android:fontFamily="@font/playtime"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:srcCompat="@raw/petate" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="John Nicolas Vincent Petate"
+                    android:textAlignment="center"
+                    android:textColor="@color/forest_green"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Project Manager and Researcher"
+                    android:textAlignment="center"
+                    android:textColor="#004455"
+                    android:fontFamily="@font/bauhaus_regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:srcCompat="@raw/albert" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Albert Querido Pasco"
+                    android:textAlignment="center"
+                    android:textColor="@color/forest_green"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Programmer/Analyst's"
+                    android:textAlignment="center"
+                    android:textColor="#004455"
+                    android:fontFamily="@font/bauhaus_regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:srcCompat="@raw/acueza" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Japhet Earl \nAcueza"
+                    android:textAlignment="center"
+                    android:textColor="@color/forest_green"
+                    android:fontFamily="@font/bauhaus_regular"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Technical Writer and Support"
+                    android:textAlignment="center"
+                    android:textColor="#004455"
+                    android:fontFamily="@font/bauhaus_regular" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="Need more?"
+            android:textAlignment="center"
+            android:textColor="@color/forest_green"
+            android:textSize="20sp"
+            android:fontFamily="@font/bauhaus_regular"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_contactUs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="@string/contact_us"
+            android:textSize="20sp"
+            android:fontFamily="@font/bauhaus_regular"
+            android:textColor="#004455"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:text="Note: This gamify app is still in development"
+            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/dark_red"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearBGWalkthought"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@raw/walk1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+            <Button
+                android:id="@+id/skipButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_margin="10dp"
+                android:background="#00FFFFFF"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Skip"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/nextWalkButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:background="#00FFFFFF"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="@string/next"
+                android:textAlignment="viewEnd"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

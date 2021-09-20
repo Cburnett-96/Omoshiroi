@@ -12,7 +12,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyOmoshiroi">
-        <activity android:name=".ChangeAvatarActivity"></activity>
+        <activity android:name=".TestingAlgorithm"></activity>
+        <activity android:name=".ChangeAvatarActivity" />
         <activity
             android:name=".ResultActivity"
             android:screenOrientation="portrait" />
@@ -48,6 +49,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,6 +60,7 @@
         </activity>
 
         <service android:name=".other.BackgroundSoundService" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

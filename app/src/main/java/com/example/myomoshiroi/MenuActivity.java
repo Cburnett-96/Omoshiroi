@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -23,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myomoshiroi.other.BackgroundSoundService;
 import com.example.myomoshiroi.other.SoundPoolManager;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,14 +36,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.Objects;
 
 public class MenuActivity extends AppCompatActivity {
 
     TextView txtlevel,txtocoin,txtpoint;
-    Button arcade,mission,token,ranking,history, buttonNext, buttonSkip, buttonWalk;
+    Button arcade,mission,token,ranking,history, buttonNext, buttonSkip, testbtn;
     ImageView profile, setting;
     LinearLayout linearBackground, linearLayout;
 
@@ -83,7 +90,7 @@ public class MenuActivity extends AppCompatActivity {
         linearBackground = findViewById(R.id.linearBGWalkthought);
         buttonNext = findViewById(R.id.nextWalkButton);
         buttonSkip = findViewById(R.id.skipButton);
-        buttonWalk = findViewById(R.id.walkThroughButton);
+        testbtn = findViewById(R.id.testbtn);
 
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -93,61 +100,55 @@ public class MenuActivity extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         avatarName = prefs.getString("avatarName",null);
 
+        checkInternetConnection();
         MusicSoundSettings();
-        FirebaseAuth();
-        GetAvatarName();
-        leveling();
 
         profile.setOnClickListener(v -> {
+            SoundPoolManager.playSound(1);
             Intent intent = new Intent(MenuActivity.this, ProfileActivity.class);
             startActivity(intent);
-            SoundPoolManager.playSound(1);
+            overridePendingTransition(0, 0);
         });
         setting.setOnClickListener(v -> {
+            SoundPoolManager.playSound(1);
             Intent intent = new Intent(MenuActivity.this, SettingActivity.class);
             startActivity(intent);
-            SoundPoolManager.playSound(1);
+            overridePendingTransition(0, 0);
         });
         arcade.setOnClickListener(v -> {
+            SoundPoolManager.playSound(1);
             PlayArcadePopUp popUpClass = new PlayArcadePopUp();
             popUpClass.showPopupWindow(v);
-            SoundPoolManager.playSound(1);
         });
         mission.setOnClickListener(v -> {
             SoundPoolManager.playSound(1);
             Intent intent = new Intent(MenuActivity.this, MissionActivity.class);
             startActivity(intent);
+            overridePendingTransition(0, 0);
         });
         token.setOnClickListener(v -> {
+            SoundPoolManager.playSound(1);
             Intent intent = new Intent(MenuActivity.this, ShopActivity.class);
             startActivity(intent);
-            SoundPoolManager.playSound(1);
+            overridePendingTransition(0, 0);
         });
         ranking.setOnClickListener(v -> {
+            SoundPoolManager.playSound(1);
             Intent intent = new Intent(MenuActivity.this, RankingActivity.class);
             startActivity(intent);
-            SoundPoolManager.playSound(1);
+            overridePendingTransition(0, 0);
         });
         history.setOnClickListener(v -> {
+            SoundPoolManager.playSound(1);
             Intent intent = new Intent(MenuActivity.this, HistoryActivity.class);
             startActivity(intent);
-            SoundPoolManager.playSound(1);
+            overridePendingTransition(0, 0);
         });
-        buttonWalk.setOnClickListener(v -> {
-            SoundPoolManager.playSound(1);
-            AlertDialog.Builder alert = new AlertDialog.Builder(MenuActivity.this);
-            alert.setTitle("OMOSHIROI Walk-through!")
-                    .setMessage("Need game instructions again?\n" +
-                            "Read carefully our instructions :)")
-                    .setIcon(android.R.drawable.ic_menu_info_details)
-                    .setCancelable(false)
-                    .setPositiveButton("Okay!", (dialog, which) -> {
-                        linearBackground.setVisibility(View.VISIBLE);
-                        linearLayout.setVisibility(View.GONE);
-                            }
-                    );
-            AlertDialog dialog = alert.create();
-            dialog.show();
+        testbtn.setOnClickListener(v -> {
+            SoundPoolManager.playSound(0);
+            Toast.makeText(MenuActivity.this, "Testing Activity! (ALGORITHM IMPLEMENTATION).", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MenuActivity.this, TestingAlgorithm.class);
+            startActivity(intent);
         });
         back_images = new int[]{R.raw.walk1,R.raw.walk2,R.raw.walk3,R.raw.walk4,R.raw.walk5,R.raw.walk6,R.raw.walk7,R.raw.walk8,R.raw.walk1};
         buttonNext.setOnClickListener(v -> {
@@ -174,6 +175,28 @@ public class MenuActivity extends AppCompatActivity {
             editor.apply();
         });
     }
+
+    public void checkInternetConnection(){
+        if (!isNetworkAvailable()) {
+            new android.app.AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("OMOSHIROI Need Internet Connection Access")
+                    .setMessage("Please Check Your Internet Connection")
+                    .setCancelable(false)
+                    .setPositiveButton("Try again!", (dialogInterface, i) -> checkInternetConnection())
+                    .setNegativeButton("Close", (dialog, which) -> {
+                        SoundPoolManager.cleanUp();
+                        finishAffinity();
+                        System.exit(0);
+                    })
+                    .show();
+        } else {
+            FirebaseAuth();
+            GetAvatarName();
+            leveling();
+        }
+    }
+
     private void MusicSoundSettings(){
         //condition of background music and sound effect
         music = prefs.getString("music setting",null);
@@ -243,15 +266,34 @@ public class MenuActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + error.getMessage());
             }
         });
-
+        //GET USER MISSION FROM DATABASE
         uidRefMission = databaseReference.child("UserMission").child(uid);
         uidRefMission.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String easyCount = Objects.requireNonNull(snapshot.child("EasyCount").getValue()).toString();
+                String dailyEasyCount = Objects.requireNonNull(snapshot.child("DailyEasyCount").getValue()).toString();
+                String task01 = Objects.requireNonNull(snapshot.child("Task01").getValue()).toString();
+                String task02 = Objects.requireNonNull(snapshot.child("Task02").getValue()).toString();
+                String task04 = Objects.requireNonNull(snapshot.child("Task04").getValue()).toString();
+                String task03 = Objects.requireNonNull(snapshot.child("Task03").getValue()).toString();
+
+                String b_dailyTask = Objects.requireNonNull(snapshot.child("DailyTask").getValue()).toString();
+                String b_task01 = Objects.requireNonNull(snapshot.child("LevelTask01").getValue()).toString();
+                String b_task02 = Objects.requireNonNull(snapshot.child("LevelTask02").getValue()).toString();
+                String b_task03 = Objects.requireNonNull(snapshot.child("LevelTask03").getValue()).toString();
+                String b_task04 = Objects.requireNonNull(snapshot.child("LevelTask04").getValue()).toString();
 
                 SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("taskEasyCount",Integer.parseInt(easyCount));
+                editor.putInt("task01",Integer.parseInt(task01));
+                editor.putInt("taskDailyEasyCount",Integer.parseInt(dailyEasyCount));
+                editor.putInt("task02",Integer.parseInt(task02));
+                editor.putInt("task04",Integer.parseInt(task04));
+                editor.putInt("task03",Integer.parseInt(task03));
+                editor.putBoolean("b_dailyTask", Boolean.parseBoolean(b_dailyTask));
+                editor.putBoolean("b_task01", Boolean.parseBoolean(b_task01));
+                editor.putBoolean("b_task02", Boolean.parseBoolean(b_task02));
+                editor.putBoolean("b_task03", Boolean.parseBoolean(b_task03));
+                editor.putBoolean("b_task04", Boolean.parseBoolean(b_task04));
                 editor.apply();
             }
             @Override
@@ -260,7 +302,7 @@ public class MenuActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + error.getMessage());
             }
         });
-
+        //GET USER ITEM FROM DATABASE
         uidRefItem = databaseReference.child("UserItem").child(uid);
         uidRefItem.addValueEventListener(new ValueEventListener() {
             @Override
@@ -423,11 +465,16 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
     private void DailyReward(){
+        //        Get Firebase auth instance
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        uidRefMission = databaseReference.child("UserMission").child(uid);
         String todayString = year+ "" + month + "" + day + "";
         currentday = prefs.getBoolean(todayString,false);
         //Daily reward
         if (!currentday && isZoneAutomatic(this) && isTimeAutomatic(this)) { //currentday =false
             Toast.makeText(MenuActivity.this, "To collect your daily prize, look through your profile or mission activity.", Toast.LENGTH_LONG).show();
+            uidRefMission.child("DailyEasyCount").setValue(0);
+            uidRefMission.child("DailyTask").setValue(false);
         }
     }
     public static boolean isTimeAutomatic(Context c) {
@@ -446,6 +493,25 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
+                if (capabilities != null) {
+                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+
+                        return true;
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+
+                        return true;
+                    } else return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET);
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public void onBackPressed() {
         if (exitToast == null || exitToast.getView() == null || exitToast.getView().getWindowToken() == null) {
@@ -455,6 +521,7 @@ public class MenuActivity extends AppCompatActivity {
         } else {
             stopService(intent);
             SoundPoolManager.cleanUp();
+            overridePendingTransition(0, 0);
             finishAffinity();
             System.exit(0);
             exitToast.cancel();

@@ -3,15 +3,12 @@ package com.example.myomoshiroi;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
@@ -30,7 +27,7 @@ import android.widget.Toast;
 import com.example.myomoshiroi.model.Attempt;
 import com.example.myomoshiroi.model.UserHistory;
 import com.example.myomoshiroi.other.SoundPoolManager;
-import com.example.myomoshiroi.other.Utils;
+import com.example.myomoshiroi.other.EasyModeTenses;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,7 +42,7 @@ import java.util.Objects;
 public class ShopActivity extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference, uidRef, uidRefItem;
+    private DatabaseReference databaseReference, uidRef, uidRefItem, uidRefMission;
     SharedPreferences prefs;
     int getocoins, getTimerAdd, getTimerFreeze, getTimerStop;
     boolean addOneMin = false;
@@ -161,7 +158,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
                 attempt3,
                 attempt4
         );
-        currentDate = Utils.formatDate(attempt.getCreatedTime());
+        currentDate = EasyModeTenses.formatDate(attempt.getCreatedTime());
         createdTime = currentDate;
         title = "Bought Power-Ups";
 
@@ -197,6 +194,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
             SoundPoolManager.playSound(0);
             Intent intent = new Intent(ShopActivity.this, MenuActivity.class);
             startActivity(intent);
+            overridePendingTransition(0, 0);
             finish();
         });
         UpdateCount();
@@ -238,6 +236,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
                 descriptions = "You purchased add one (1) minute.";
                 UpdateData();
                 SaveHistory();
+                SaveMission();
             }
             else{
                 SoundPoolManager.playSound(0);
@@ -251,6 +250,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
                 descriptions = "You purchased freeze timer.";
                 UpdateData();
                 SaveHistory();
+                SaveMission();
             }
             else{
                 SoundPoolManager.playSound(0);
@@ -264,6 +264,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
                 descriptions = "You purchased stop timer.";
                 UpdateData();
                 SaveHistory();
+                SaveMission();
             }
             else{
                 SoundPoolManager.playSound(0);
@@ -575,6 +576,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
                     descriptions = "You purchased add one (1) minute.";
                     UpdateData();
                     SaveHistory();
+                    SaveMission();
                 }
             else{
                     SoundPoolManager.playSound(0);
@@ -596,6 +598,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
                     descriptions = "You purchased freeze timer.";
                     UpdateData();
                     SaveHistory();
+                    SaveMission();
             }
             else{
                     SoundPoolManager.playSound(0);
@@ -617,6 +620,7 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
                 descriptions = "You purchased stop timer.";
                 UpdateData();
                 SaveHistory();
+                SaveMission();
             }
             else{
                 SoundPoolManager.playSound(0);
@@ -634,6 +638,12 @@ public class ShopActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
+    }
+    private void SaveMission(){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        uidRefMission = databaseReference.child("UserMission").child(uid);
+        uidRefMission.child("Task03").setValue(1);
     }
     private  void SaveHistory(){
         firebaseDatabase = FirebaseDatabase.getInstance();

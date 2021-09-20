@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000">
+
+    <LinearLayout
+        android:id="@+id/linear_SelectMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_bg"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_close"
+                app:backgroundTint="@color/dark_red" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:contentDescription="Select Your Easy Mode"
+                app:srcCompat="@raw/easy" />
+
+            <Button
+                android:id="@+id/btn_HelpEasyMode"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_help_outline"
+                android:gravity="center_horizontal"
+                app:backgroundTint="@color/dark_blue" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="Select your mode"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/playtime"
+            android:textColor="@color/forest_green" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_Tenses"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="Tenses Mode"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                app:backgroundTint="#D6D9EA"
+                app:icon="@raw/tenses"
+                app:iconGravity="top"
+                app:iconSize="50dp"
+                app:iconTint="@null" />
+
+            <Button
+                android:id="@+id/btn_TorF"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="True or False"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                app:backgroundTint="#D6D9EA"
+                app:icon="@raw/true_false"
+                app:iconGravity="top"
+                app:iconSize="50dp"
+                app:iconTint="@null" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_MultipleChoice"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/layout_bg"
+            android:elevation="10dp"
+            android:fontFamily="@font/bauhaus_regular"
+            android:stateListAnimator="@null"
+            android:text="Multiple Choice"
+            android:textAllCaps="false"
+            android:textColor="#004455"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:translationZ="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foregroundGravity="bottom"
+            app:backgroundTint="#D6D9EA"
+            app:icon="@raw/multiple"
+            app:iconSize="60dp"
+            app:iconTint="@null" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_Spelling"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="Spelling Mode"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                app:backgroundTint="#D6D9EA"
+                app:icon="@raw/spelling"
+                app:iconGravity="top"
+                app:iconSize="50dp"
+                app:iconTint="@null" />
+
+            <Button
+                android:id="@+id/btn_Matching"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="Matching Mode"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                app:backgroundTint="#D6D9EA"
+                app:icon="@raw/matching"
+                app:iconGravity="top"
+                app:iconSize="50dp"
+                app:iconTint="@null" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

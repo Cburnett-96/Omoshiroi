@@ -13,9 +13,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.myomoshiroi.adapter.HistoryAdapter;
 import com.example.myomoshiroi.adapter.RankingAdapter;
 import com.example.myomoshiroi.model.UserHistory;
@@ -42,6 +44,7 @@ public class HistoryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private HistoryAdapter adapter;
     private List<UserHistory> userHistoryList;
+    ImageView loading;
     TextView totalActivities, totalXP, totalOcoins;
 
     SharedPreferences prefs;
@@ -56,6 +59,7 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         linearProgress = findViewById(R.id.linearLoadingProgress);
+        loading = findViewById(R.id.loading);
         totalActivities = findViewById(R.id.textViewTotalActivities);
         totalXP = findViewById(R.id.textViewTotalXp);
         totalOcoins = findViewById(R.id.textViewTotalOCoin);
@@ -78,10 +82,14 @@ public class HistoryActivity extends AppCompatActivity {
                 SoundPoolManager.playSound(0);
                 Intent intent = new Intent(HistoryActivity.this, MenuActivity.class);
                 startActivity(intent);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });
         linearProgress.setVisibility(View.VISIBLE);
+        Glide.with(this)
+                .load(R.raw.splash_screen_loading)
+                .into(loading);
         Query query = FirebaseDatabase.getInstance().getReference("UserHistory")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .orderByChild("CreatedTime");
@@ -102,6 +110,7 @@ public class HistoryActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 Collections.reverse(userHistoryList);
                 linearProgress.setVisibility(View.GONE);
+                Glide.with(HistoryActivity.this).clear(loading);
             }
         }
 

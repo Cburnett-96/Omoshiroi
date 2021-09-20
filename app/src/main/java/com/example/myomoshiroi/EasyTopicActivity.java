@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,9 +26,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myomoshiroi.other.Constants;
+import com.example.myomoshiroi.other.EasyModeMatching;
+import com.example.myomoshiroi.other.EasyModeMultiple;
+import com.example.myomoshiroi.other.EasyModeSpelling;
+import com.example.myomoshiroi.other.EasyModeTorF;
 import com.example.myomoshiroi.other.SoundPoolManager;
-import com.example.myomoshiroi.other.Utils;
+import com.example.myomoshiroi.other.EasyModeTenses;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -77,6 +83,9 @@ public class EasyTopicActivity extends AppCompatActivity {
     TextView textViewAdd, textViewFreeze, textViewStop;
     int getTimerAdd, getTimerFreeze, getTimerStop;
 
+    ImageView loading;
+    String subject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,9 +94,9 @@ public class EasyTopicActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_easy_topic);
-        // Prevent taking screenshot
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-                WindowManager.LayoutParams.FLAG_SECURE);
+        // Prevent taking screenshot and screen record
+        /*getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE);*/
 
         linearQuestionAnswer = findViewById(R.id.linearQuestionAnswer);
         titleQuestion = findViewById(R.id.titleText);
@@ -104,15 +113,68 @@ public class EasyTopicActivity extends AppCompatActivity {
         radioButton2 = findViewById(R.id.radioButtonAnswer2);
         radioButton3 = findViewById(R.id.radioButtonAnswer3);
 
-        linearProgress = findViewById(R.id.linearLoadingProgress);
-        linearProgress.setVisibility(View.VISIBLE);
         mProgressBar = findViewById(R.id.progressBarCircle);
         mProgressBar.setMax((int)START_TIME_IN_MILLIS / 1000);
         backgroundImage = findViewById(R.id.linearBackgroundQuestion);
         background_images = new int[]{R.drawable.easybg, R.drawable.easybg1,
                 R.drawable.easybg2};
 
-        questionsAnswerMap = Utils.getRandomEasy(Constants.QUESTION_SHOWING);
+        linearProgress = findViewById(R.id.linearLoadingProgress);
+        loading = findViewById(R.id.loading);
+
+        Intent intentSubject = getIntent();
+        subject = intentSubject.getStringExtra(Constants.SUBJECT);
+
+        linearQuestionAnswer.setVisibility(View.GONE);
+        linearProgress.setVisibility(View.VISIBLE);
+        Glide.with(EasyTopicActivity.this)
+                .load(R.raw.splash_screen_loading)
+                .into(loading);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                displayData();
+                startTimer();
+                linearQuestionAnswer.setVisibility(View.VISIBLE);
+                linearProgress.setVisibility(View.GONE);
+                Glide.with(EasyTopicActivity.this).clear(loading);
+            }
+        }, 3000);
+
+        if (subject.equals(getString(R.string.tenses_stage_01))) {
+            questionsAnswerMap = EasyModeTenses.getRandomTenses(this,getString(R.string.tenses_stage_01),Constants.QUESTION_SHOWING);
+            titleQuestion.setText(getString(R.string.tenses_stage_01));
+        } else if (subject.equals(getString(R.string.tenses_stage_02))) {
+            questionsAnswerMap = EasyModeTenses.getRandomTenses(this,getString(R.string.tenses_stage_02),Constants.QUESTION_SHOWING);
+            titleQuestion.setText(getString(R.string.tenses_stage_02));
+        }
+        else if (subject.equals(getString(R.string.torf_stage_01))) {
+            questionsAnswerMap = EasyModeTorF.getRandomTorF(this,getString(R.string.torf_stage_01),Constants.QUESTION_SHOWING);
+            titleQuestion.setText(getString(R.string.torf_stage_01));
+            radioButton3.setEnabled(false);
+            radioButton3.setVisibility(View.GONE);
+        }
+        else if (subject.equals(getString(R.string.matching_stage_01))) {
+            questionsAnswerMap = EasyModeMatching.getRandomMatching(this,getString(R.string.matching_stage_01),Constants.QUESTION_SHOWING);
+            titleQuestion.setText(getString(R.string.matching_stage_01));
+        }
+        else if (subject.equals(getString(R.string.spelling_stage_01))) {
+            questionsAnswerMap = EasyModeSpelling.getRandomSpelling(this,getString(R.string.spelling_stage_01),Constants.QUESTION_SHOWING);
+            titleQuestion.setText(getString(R.string.spelling_stage_01));
+            tvQuestion.setText("Click speaker icon to listen spelling.");
+        }
+        else if (subject.equals(getString(R.string.multiple_stage_01))) {
+            questionsAnswerMap = EasyModeMultiple.getRandomMultiple(this,getString(R.string.multiple_stage_01),Constants.QUESTION_SHOWING);
+            titleQuestion.setText(getString(R.string.multiple_stage_01));
+        }else if (subject.equals(getString(R.string.multiple_stage_02))) {
+            questionsAnswerMap = EasyModeMultiple.getRandomMultiple(this,getString(R.string.multiple_stage_02),Constants.QUESTION_SHOWING);
+            titleQuestion.setText(getString(R.string.multiple_stage_02));
+        }else{
+            questionsAnswerMap = EasyModeMultiple.getRandomMultiple(this,getString(R.string.multiple_stage_03),Constants.QUESTION_SHOWING);
+            titleQuestion.setText(getString(R.string.multiple_stage_03));
+        }
+
         questions = new ArrayList<>(questionsAnswerMap.keySet());
 
         String uid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
@@ -131,6 +193,7 @@ public class EasyTopicActivity extends AppCompatActivity {
                         //Back to Menu Activity
                         Intent intent = new Intent(EasyTopicActivity.this,MenuActivity.class);
                         startActivity(intent);
+                        overridePendingTransition(0, 0);
                         finish();
                         stopTimer();
                     })
@@ -170,6 +233,7 @@ public class EasyTopicActivity extends AppCompatActivity {
                     intentResult.putExtra(Constants.INCORRECT,Constants.QUESTION_SHOWING - correctQuestion);
                     intentResult.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intentResult.putExtra("EasyCount",1);
+                    intentResult.putExtra(Constants.SUBJECT, subject);
                     startActivity(intentResult);
                     finish();
                 }
@@ -191,18 +255,17 @@ public class EasyTopicActivity extends AppCompatActivity {
                     }
                 });
         btnspeak.setOnClickListener(v -> {
-            String getQuestion = tvQuestion.getText().toString();
+            String getQuestion = questions.get(currentQuestionIndex);
             if (getAnswer != null){
                 getQuestion = getQuestion.replace("_____",getAnswer);
             }else{
                 getQuestion = getQuestion.replace("_____","blank");
             }
+            setAnswersToRadioButton();
             textToSpeech.setPitch(1.3f);
             textToSpeech.setSpeechRate(0.7f);
             textToSpeech.speak(getQuestion, TextToSpeech.QUEUE_FLUSH,null);
         });
-        displayData();
-        startTimer();
     }
     public void onPause(){
         if(textToSpeech !=null){
@@ -212,24 +275,44 @@ public class EasyTopicActivity extends AppCompatActivity {
         super.onPause();
     }
     private void displayNextQuestions() {
-        tvQuestion.setText(questions.get(currentQuestionIndex));
-        tvQuestionNumber.setText((currentQuestionIndex + 1) + " / 10");
-        setAnswersToRadioButton();
+        if (subject.equals(getString(R.string.spelling_stage_01))) {
+            tvQuestion.setText("To listen to the spelling, click the speaker button.");
+            radioButton1.setText("Click first speaker button.");
+            radioButton2.setText("Click first speaker button.");
+            radioButton3.setText("Click first speaker button.");
+        }else {
+            tvQuestion.setText(questions.get(currentQuestionIndex));
+            setAnswersToRadioButton();
+        }
+
+        tvQuestionNumber.setText("Question: "+(currentQuestionIndex + 1) + " / 10");
         if (currentQuestionIndex == Constants.QUESTION_SHOWING  - 1){
             btnNext.setText(getText(R.string.finish));
         }
     }
     private void displayData() {
-        tvQuestion.setText(questions.get(currentQuestionIndex));
-        tvQuestionNumber.setText((currentQuestionIndex + 1)+ " / 10");
-        setAnswersToRadioButton();
-        linearProgress.setVisibility(View.GONE);
+        if (subject.equals(getString(R.string.spelling_stage_01))) {
+            tvQuestion.setText("To listen to the spelling, click the speaker button.");
+            radioButton1.setText("Click first speaker button.");
+            radioButton2.setText("Click first speaker button.");
+            radioButton3.setText("Click first speaker button.");
+        }else {
+            tvQuestion.setText(questions.get(currentQuestionIndex));
+            setAnswersToRadioButton();
+        }
+        tvQuestionNumber.setText("Question: "+(currentQuestionIndex + 1)+ " / 10");
     }
     private void setAnswersToRadioButton(){
         ArrayList<String> questionKey = new ArrayList(Objects.requireNonNull(questionsAnswerMap.get(questions.get(currentQuestionIndex))).keySet());
-        radioButton1.setText(questionKey.get(0));
-        radioButton2.setText(questionKey.get(1));
-        radioButton3.setText(questionKey.get(2));
+
+        if (subject.equals(getString(R.string.torf_stage_01))) {
+            radioButton1.setText(questionKey.get(0));
+            radioButton2.setText(questionKey.get(1));
+        } else {
+            radioButton1.setText(questionKey.get(0));
+            radioButton2.setText(questionKey.get(1));
+            radioButton3.setText(questionKey.get(2));
+        }
     }
 
     private void startTimer() {
@@ -258,6 +341,7 @@ public class EasyTopicActivity extends AppCompatActivity {
                         .setNegativeButton("Restart", (dialog, which) -> {
                             mTimerRunning = false;
                             Intent intent = new Intent(EasyTopicActivity.this,EasyTopicActivity.class);
+                            intent.putExtra(Constants.SUBJECT, subject);
                             startActivity(intent);
                             finish();
                         });
@@ -372,7 +456,6 @@ public class EasyTopicActivity extends AppCompatActivity {
                 SoundPoolManager.playSound(0);
                 Toast.makeText(EasyTopicActivity.this, "You don't have enough power-ups to use this!", Toast.LENGTH_LONG).show();
             }
-
         });
 
         //Handler for clicking on the inactive zone of the window

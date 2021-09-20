@@ -13,9 +13,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.myomoshiroi.adapter.RankingAdapter;
 import com.example.myomoshiroi.adapter.RankingTopOneAdapter;
 import com.example.myomoshiroi.adapter.RankingTopTwoAdapter;
@@ -42,6 +44,7 @@ public class RankingActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     SharedPreferences prefs;
     String fullname, avatar;
+    ImageView loading;
     int point;
 
     private RecyclerView recyclerView, recyclerViewTop, recyclerViewTop2;
@@ -66,6 +69,7 @@ public class RankingActivity extends AppCompatActivity {
         recyclerViewTop2 = findViewById(R.id.recyclerViewTopTwoThree);
         recyclerViewTop = findViewById(R.id.recyclerViewTop);
         recyclerView = findViewById(R.id.recyclerView);
+        loading = findViewById(R.id.loading);
 
         recyclerViewTop2.setHasFixedSize(true);
         recyclerViewTop2.setLayoutManager(new LinearLayoutManager(this));
@@ -94,10 +98,14 @@ public class RankingActivity extends AppCompatActivity {
                 SoundPoolManager.playSound(0);
                 Intent intent = new Intent(RankingActivity.this, MenuActivity.class);
                 startActivity(intent);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });
         linearProgress.setVisibility(View.VISIBLE);
+        Glide.with(this)
+                .load(R.raw.splash_screen_loading)
+                .into(loading);
         saveData();
         Query query = FirebaseDatabase.getInstance().getReference("UserRanking")
                 .orderByChild("point");
@@ -150,6 +158,7 @@ public class RankingActivity extends AppCompatActivity {
                 adapter.removeItem(0);
                 adapter.removeItem(0);
                 linearProgress.setVisibility(View.GONE);
+                Glide.with(RankingActivity.this).clear(loading);
             }
         }
 

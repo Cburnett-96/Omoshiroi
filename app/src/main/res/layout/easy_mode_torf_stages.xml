@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_bg"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_back"
+                app:backgroundTint="@color/dark_red" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                app:srcCompat="@raw/true_false" />
+
+            <Button
+                android:id="@+id/btn_HelpEasyMode"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_help_outline"
+                android:gravity="center_horizontal"
+                app:backgroundTint="@color/dark_blue" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="True or False Mode Stages"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/playtime"
+            android:textColor="@color/forest_green" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_Stage1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="1"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                app:backgroundTint="#D6D9EA" />
+
+            <Button
+                android:id="@+id/btn_Stage2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="2"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                android:enabled="false"
+                app:backgroundTint="@color/dark_gray" />
+            <Button
+                android:id="@+id/btn_Stage3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="3"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                android:enabled="false"
+                app:backgroundTint="@color/dark_gray" />
+            <Button
+                android:id="@+id/btn_Stage4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="4"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                android:enabled="false"
+                app:backgroundTint="@color/dark_gray" />
+            <Button
+                android:id="@+id/btn_Stage5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="5"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                android:enabled="false"
+                app:backgroundTint="@color/dark_gray" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_Stage6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="6"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                android:enabled="false"
+                app:backgroundTint="@color/dark_gray" />
+
+            <Button
+                android:id="@+id/btn_Stage7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="7"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                android:enabled="false"
+                app:backgroundTint="@color/dark_gray" />
+            <Button
+                android:id="@+id/btn_Stage8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="8"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                android:enabled="false"
+                app:backgroundTint="@color/dark_gray" />
+            <Button
+                android:id="@+id/btn_Stage9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="9"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                android:enabled="false"
+                app:backgroundTint="@color/dark_gray" />
+            <Button
+                android:id="@+id/btn_Stage10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/switchbackground"
+                android:elevation="5dp"
+                android:fontFamily="@font/bauhaus_regular"
+                android:stateListAnimator="@null"
+                android:text="✔"
+                android:textAllCaps="false"
+                android:textColor="#004455"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:translationZ="2dp"
+                android:enabled="false"
+                app:backgroundTint="@color/dark_gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

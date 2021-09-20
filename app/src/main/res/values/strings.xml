@@ -30,7 +30,6 @@
     <string name="music">Background Music</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
-    <string name="literature">Literature</string>
     <string name="over"> / 5</string>
     <string name="play_again">Play Again</string>
     <string name="close">Close</string>
@@ -38,7 +37,17 @@
     <string name="hard">Hard</string>
     <string name="medium">Medium</string>
     <string name="easy">Easy</string>
-    <string name="about">About</string>
+    <string name="about">About Us</string>
     <string name="change_password">Change Password</string>
     <string name="save">Save</string>
+    <string name="multiple_mode">Multiple Choice Mode</string>
+    <string name="contact_us"><u><b>Contact Us</b></u></string>
+    <string name="tenses_stage_01">Tenses Mode Stage 01</string>
+    <string name="tenses_stage_02">Tenses Mode Stage 02</string>
+    <string name="multiple_stage_01">Multiple Choice Mode Stage 01</string>
+    <string name="multiple_stage_02">Multiple Choice Mode Stage 02</string>
+    <string name="multiple_stage_03">Multiple Choice Mode Stage 03</string>
+    <string name="torf_stage_01">True or False Mode Stage 01</string>
+    <string name="matching_stage_01">Matching Mode Stage 01</string>
+    <string name="spelling_stage_01">Spelling Mode Stage 01</string>
 </resources>
